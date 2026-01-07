@@ -504,6 +504,7 @@ shape = SubResource("CapsuleShape3D_7e6hg")
 [node name="AnimatedSprite3D" type="AnimatedSprite3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.2228589, -0.41318434, 0.21266842)
 billboard = 1
+texture_filter = 2
 sprite_frames = SubResource("SpriteFrames_s4gft")
 animation = &"Idle"
 frame_progress = 0.74735534
