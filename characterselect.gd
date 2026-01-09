@@ -6,6 +6,8 @@ extends Control
 
 var index := 0
 
+var selected_map : int = 0
+
 func _ready():
 	update_focus_position()
 

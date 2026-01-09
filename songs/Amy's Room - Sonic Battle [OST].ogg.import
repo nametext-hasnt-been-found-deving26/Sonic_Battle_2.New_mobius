@@ -1,0 +1,19 @@
+[remap]
+
+importer="oggvorbisstr"
+type="AudioStreamOggVorbis"
+uid="uid://cusk4jgmk6w2b"
+path="res://.godot/imported/Amy's Room - Sonic Battle [OST].ogg-d8fa18a62d7fbc0350ab69d1fb89772d.oggvorbisstr"
+
+[deps]
+
+source_file="res://songs/Amy's Room - Sonic Battle [OST].ogg"
+dest_files=["res://.godot/imported/Amy's Room - Sonic Battle [OST].ogg-d8fa18a62d7fbc0350ab69d1fb89772d.oggvorbisstr"]
+
+[params]
+
+loop=true
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

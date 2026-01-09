@@ -1,0 +1,55 @@
+[gd_scene load_steps=5 format=3 uid="uid://6lrauamfcghl"]
+
+[ext_resource type="PackedScene" uid="uid://b2teeqmi4trw1" path="res://models/arenas/Battle Highway/battle_highway.glb" id="1_mkf3k"]
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_nuky3"]
+sky_top_color = Color(1, 1, 1, 1)
+sky_horizon_color = Color(1, 1, 1, 1)
+ground_bottom_color = Color(0, 0, 0, 1)
+ground_horizon_color = Color(0, 0, 0, 1)
+
+[sub_resource type="Sky" id="Sky_mkf3k"]
+sky_material = SubResource("ProceduralSkyMaterial_nuky3")
+
+[sub_resource type="Environment" id="Environment_uou4r"]
+background_mode = 1
+background_color = Color(0.0024102437, 0.27612013, 0.625748, 1)
+sky = SubResource("Sky_mkf3k")
+ambient_light_source = 2
+ambient_light_color = Color(1, 1, 1, 1)
+reflected_light_source = 2
+tonemap_mode = 2
+
+[node name="battle_highway" instance=ExtResource("1_mkf3k")]
+
+[node name="BH_Ground" parent="." index="0"]
+cast_shadow = 0
+
+[node name="BH_Blocks" parent="." index="1"]
+cast_shadow = 0
+
+[node name="BH_Walls" parent="." index="2"]
+cast_shadow = 0
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="." index="3"]
+environment = SubResource("Environment_uou4r")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="." index="4"]
+transform = Transform3D(-0.8660254, -0.43301278, 0.25, 0, 0.49999997, 0.86602545, -0.50000006, 0.75, -0.43301266, 0, 0, 0)
+
+[node name="SpawnPoints" type="Node3D" parent="." index="5"]
+
+[node name="Marker3D" type="Marker3D" parent="SpawnPoints" index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 0.25, 1)
+
+[node name="Marker3D2" type="Marker3D" parent="SpawnPoints" index="1"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 0.25, -1)
+
+[node name="Marker3D3" type="Marker3D" parent="SpawnPoints" index="2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 0.25, -1)
+
+[node name="Marker3D4" type="Marker3D" parent="SpawnPoints" index="3"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 0.25, 1)
+
+[node name="Marker3D5" type="Marker3D" parent="SpawnPoints" index="4"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.25, 0)

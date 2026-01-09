@@ -1,0 +1,19 @@
+[remap]
+
+importer="oggvorbisstr"
+type="AudioStreamOggVorbis"
+uid="uid://o73bcn2ugxm"
+path="res://.godot/imported/Library - Sonic Battle [OST].ogg-8847fe129949728a5976f35db6ede5ce.oggvorbisstr"
+
+[deps]
+
+source_file="res://songs/Library - Sonic Battle [OST].ogg"
+dest_files=["res://.godot/imported/Library - Sonic Battle [OST].ogg-8847fe129949728a5976f35db6ede5ce.oggvorbisstr"]
+
+[params]
+
+loop=true
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

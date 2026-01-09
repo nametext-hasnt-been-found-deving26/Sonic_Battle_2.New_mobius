@@ -1,0 +1,12 @@
+[gd_resource type="Resource" script_class="ArenaPackage" load_steps=4 format=3 uid="uid://cn1cdmic73mdf"]
+
+[ext_resource type="Script" uid="uid://bpgdq2wnr4ubr" path="res://scripts/arena_package/arena_package.gd" id="1_gk6rl"]
+[ext_resource type="PackedScene" uid="uid://cnb7u2tq6o8sr" path="res://scenes/stages/metal_depot_arena.tscn" id="1_loxkx"]
+[ext_resource type="AudioStream" uid="uid://uco2li46d17g" path="res://songs/Metal Depot - Sonic Battle [OST].ogg" id="2_66gpp"]
+
+[resource]
+script = ExtResource("1_gk6rl")
+arena_title = "Metal Depot"
+arena_scene = ExtResource("1_loxkx")
+arena_song = ExtResource("2_66gpp")
+metadata/_custom_type_script = "uid://bpgdq2wnr4ubr"

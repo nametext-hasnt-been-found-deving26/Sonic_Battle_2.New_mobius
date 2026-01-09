@@ -1,0 +1,19 @@
+[remap]
+
+importer="oggvorbisstr"
+type="AudioStreamOggVorbis"
+uid="uid://b83rgsj5dvkry"
+path="res://.godot/imported/Green Hill - Sonic Battle.ogg-363e6cd91e3885c0d833f5c7a3820820.oggvorbisstr"
+
+[deps]
+
+source_file="res://songs/Green Hill - Sonic Battle.ogg"
+dest_files=["res://.godot/imported/Green Hill - Sonic Battle.ogg-363e6cd91e3885c0d833f5c7a3820820.oggvorbisstr"]
+
+[params]
+
+loop=true
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

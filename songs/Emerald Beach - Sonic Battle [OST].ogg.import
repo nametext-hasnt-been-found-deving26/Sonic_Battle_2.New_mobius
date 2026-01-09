@@ -1,0 +1,19 @@
+[remap]
+
+importer="oggvorbisstr"
+type="AudioStreamOggVorbis"
+uid="uid://du5qkulfnkvss"
+path="res://.godot/imported/Emerald Beach - Sonic Battle [OST].ogg-a3f52ec37a2c14f6ca82c2e6cf95e307.oggvorbisstr"
+
+[deps]
+
+source_file="res://songs/Emerald Beach - Sonic Battle [OST].ogg"
+dest_files=["res://.godot/imported/Emerald Beach - Sonic Battle [OST].ogg-a3f52ec37a2c14f6ca82c2e6cf95e307.oggvorbisstr"]
+
+[params]
+
+loop=true
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

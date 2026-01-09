@@ -9,7 +9,7 @@
 [ext_resource type="Script" uid="uid://c84a0ecj6mg3f" path="res://characters/sonic/ichikoro_gauge.gd" id="6_o7udh"]
 [ext_resource type="FontFile" uid="uid://bslatmffnpstt" path="res://KO numbers.ttf" id="7_wpnlk"]
 [ext_resource type="Script" uid="uid://qf3khihtq7x2" path="res://characters/sonic/ko_counter.gd" id="8_6mqiq"]
-[ext_resource type="Texture2D" uid="uid://c6nflkqkpg1q1" path="res://KO numbers.png" id="9_41aki"]
+[ext_resource type="Texture2D" uid="uid://cxpwtsgddemle" path="res://KO numbers.png" id="9_41aki"]
 [ext_resource type="Texture2D" uid="uid://clivvy55e12um" path="res://KO pt.png" id="10_41aki"]
 [ext_resource type="Texture2D" uid="uid://c70wr67hushpu" path="res://KO sonic icon.png" id="11_fqyed"]
 
