@@ -1,14 +1,30 @@
-[gd_scene load_steps=2 format=3 uid="uid://bp17hptes547x"]
+[gd_scene load_steps=17 format=3 uid="uid://bp17hptes547x"]
 
 [ext_resource type="Script" uid="uid://brum6c0fcikjv" path="res://characterselect.gd" id="1_gycgs"]
+[ext_resource type="Script" uid="uid://drlv8j5caiprn" path="res://scripts/map_loader.gd" id="2_y2tqo"]
+[ext_resource type="Script" uid="uid://bpgdq2wnr4ubr" path="res://scripts/arena_package.gd" id="3_4leu1"]
+[ext_resource type="Resource" uid="uid://de5i6ldj0kko6" path="res://resources/map packages/amys_room_pack.tres" id="4_3wopw"]
+[ext_resource type="Resource" uid="uid://bgyjx5u856gt3" path="res://resources/map packages/battle_highway_pack.tres" id="5_f5jcp"]
+[ext_resource type="Resource" uid="uid://cavan4vn15yvh" path="res://resources/map packages/chao_ruins_pack.tres" id="6_6j0yv"]
+[ext_resource type="Resource" uid="uid://qavvp87icil1" path="res://resources/map packages/club_rouge_pack.tres" id="7_bqwm8"]
+[ext_resource type="Resource" uid="uid://bxwg14x0niy6i" path="res://resources/map packages/colosseum_pack.tres" id="8_owpx6"]
+[ext_resource type="Resource" uid="uid://cb3hw6b2734wg" path="res://resources/map packages/emerald_beach_pack.tres" id="9_uow27"]
+[ext_resource type="Resource" uid="uid://bw2yytth7bb4a" path="res://resources/map packages/green_hill_zone_pack.tres" id="10_s0vaq"]
+[ext_resource type="Resource" uid="uid://cvj382svkehrw" path="res://resources/map packages/holy_summit_pack.tres" id="11_talir"]
+[ext_resource type="Resource" uid="uid://dxjye88c3tkgt" path="res://resources/map packages/library_pack.tres" id="12_uvws2"]
+[ext_resource type="Resource" uid="uid://cn1cdmic73mdf" path="res://resources/map packages/metal_depot_pack.tres" id="13_ijgdi"]
+[ext_resource type="Resource" uid="uid://dxdn1a8b2h0ns" path="res://resources/map packages/tails_lab_pack.tres" id="14_qqb76"]
+[ext_resource type="PackedScene" uid="uid://c844scnvf5jom" path="res://characters/sonic/sonic.tscn" id="15_f5jcp"]
+[ext_resource type="PackedScene" uid="uid://bnuij1366kj5w" path="res://characters/sonic copy/sonic copy sprites/sonic_copy.tscn" id="16_f5jcp"]
 
-[node name="characterselect" type="Control"]
+[node name="characterselect" type="Control" node_paths=PackedStringArray("map_loader")]
 layout_mode = 3
 anchors_preset = 0
 offset_top = 74.0
 offset_right = 49.0
 offset_bottom = 74.0
 script = ExtResource("1_gycgs")
+map_loader = NodePath("MapLoader")
 
 [node name="GridContainer" type="GridContainer" parent="."]
 layout_mode = 0
@@ -56,4 +72,45 @@ text = "Rule
 
 "
 
+[node name="MapSelector" type="HBoxContainer" parent="."]
+layout_mode = 0
+anchor_left = 12.551021
+anchor_right = 17.306122
+offset_top = -42.0
+offset_bottom = -2.0
+metadata/_edit_use_anchors_ = true
+
+[node name="Previous" type="Button" parent="MapSelector"]
+custom_minimum_size = Vector2(40, 40)
+layout_mode = 2
+text = "<"
+
+[node name="CurrentMap" type="Label" parent="MapSelector"]
+custom_minimum_size = Vector2(145, 0)
+layout_mode = 2
+text = "Emerald Beach"
+horizontal_alignment = 1
+
+[node name="Next" type="Button" parent="MapSelector"]
+custom_minimum_size = Vector2(40, 40)
+layout_mode = 2
+text = ">"
+
+[node name="MapLoader" type="Node3D" parent="." node_paths=PackedStringArray("arena_root", "song_player", "right_button", "current_map_l", "left_button")]
+script = ExtResource("2_y2tqo")
+map_packages = Array[ExtResource("3_4leu1")]([ExtResource("4_3wopw"), ExtResource("5_f5jcp"), ExtResource("6_6j0yv"), ExtResource("7_bqwm8"), ExtResource("8_owpx6"), ExtResource("9_uow27"), ExtResource("10_s0vaq"), ExtResource("11_talir"), ExtResource("12_uvws2"), ExtResource("13_ijgdi"), ExtResource("14_qqb76")])
+arena_root = NodePath("ArenaRoot")
+song_player = NodePath("SongPlayer")
+right_button = NodePath("../MapSelector/Next")
+current_map_l = NodePath("../MapSelector/CurrentMap")
+left_button = NodePath("../MapSelector/Previous")
+player_char = ExtResource("15_f5jcp")
+enemy_char = ExtResource("16_f5jcp")
+
+[node name="SongPlayer" type="AudioStreamPlayer" parent="MapLoader"]
+
+[node name="ArenaRoot" type="Node3D" parent="MapLoader"]
+
 [connection signal="pressed" from="GridContainer/Player 1" to="." method="_on_button_pressed"]
+[connection signal="pressed" from="MapSelector/Previous" to="MapLoader" method="_on_previous_pressed"]
+[connection signal="pressed" from="MapSelector/Next" to="MapLoader" method="_on_next_pressed"]

@@ -498,11 +498,9 @@ slide_on_ceiling = false
 script = ExtResource("1_4n136")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.18133569, -0.34782368, 0.14870095)
 shape = SubResource("CapsuleShape3D_7e6hg")
 
 [node name="AnimatedSprite3D" type="AnimatedSprite3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.2228589, -0.41318434, 0.21266842)
 billboard = 1
 texture_filter = 2
 sprite_frames = SubResource("SpriteFrames_s4gft")
@@ -516,4 +514,4 @@ visible = false
 mesh = SubResource("CapsuleMesh_4n136")
 
 [node name="Camera3D" type="Camera3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.173, 0.186, 1.369)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.186, 1.369)

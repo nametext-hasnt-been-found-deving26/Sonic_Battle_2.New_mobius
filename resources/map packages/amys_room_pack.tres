@@ -1,7 +1,7 @@
 [gd_resource type="Resource" script_class="ArenaPackage" load_steps=4 format=3 uid="uid://de5i6ldj0kko6"]
 
 [ext_resource type="PackedScene" uid="uid://1fbyef7xbkrv" path="res://scenes/stages/amy´s_room_arena.tscn" id="1_k7s5r"]
-[ext_resource type="Script" uid="uid://bpgdq2wnr4ubr" path="res://scripts/arena_package/arena_package.gd" id="1_vne26"]
+[ext_resource type="Script" uid="uid://bpgdq2wnr4ubr" path="res://scripts/arena_package.gd" id="1_vne26"]
 [ext_resource type="AudioStream" uid="uid://cusk4jgmk6w2b" path="res://songs/Amy's Room - Sonic Battle [OST].ogg" id="2_4g8ct"]
 
 [resource]

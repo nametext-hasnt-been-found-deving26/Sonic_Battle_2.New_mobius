@@ -1,6 +1,6 @@
 [gd_resource type="Resource" script_class="ArenaPackage" load_steps=4 format=3 uid="uid://dxdn1a8b2h0ns"]
 
-[ext_resource type="Script" uid="uid://bpgdq2wnr4ubr" path="res://scripts/arena_package/arena_package.gd" id="1_7p01t"]
+[ext_resource type="Script" uid="uid://bpgdq2wnr4ubr" path="res://scripts/arena_package.gd" id="1_7p01t"]
 [ext_resource type="PackedScene" uid="uid://biwxdnetgaek1" path="res://scenes/stages/tail´s_lab_arena.tscn" id="1_vm0s8"]
 [ext_resource type="AudioStream" uid="uid://crf3x1iqm7ecm" path="res://songs/Tails' Lab - Sonic Battle [OST].ogg" id="2_vekam"]
 

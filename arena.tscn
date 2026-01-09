@@ -143,7 +143,7 @@ script = ExtResource("8_35c7g")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.060438767, 0.31678134, 1.7250112)
 
 [node name="sonic copy" parent="." groups=["Player"] instance=ExtResource("9_uvldv")]
-transform = Transform3D(1, 0, 1.4901161e-08, 0, 1, 0, 1.4901161e-08, 0, 1, -0.81669617, 0.5464397, 1.4098233)
+transform = Transform3D(1, 0, 1.4901161e-08, 0, 1, 0, 1.4901161e-08, 0, 1, -0.81710124, 0.5486079, 1.4086056)
 
 [node name="Camera3D" type="Camera3D" parent="."]
 transform = Transform3D(0.12947224, -0.36797848, 0.9207762, 0.05123816, 0.9298343, 0.36439377, -0.99025834, 0, 0.13924228, 3.857544, 1.3627677, 0.11212826)

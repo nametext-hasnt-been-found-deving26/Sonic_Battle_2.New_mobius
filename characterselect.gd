@@ -3,6 +3,7 @@ extends Control
 @onready var grid = $GridContainer
 @onready var focus_box = $FocusBox
 @export var arena_scene: String = "res://arena.tscn"
+@export var map_loader : MapLoader
 
 var index := 0
 
@@ -59,4 +60,6 @@ func select_current():
 
 
 func _on_button_pressed() -> void:
-	get_tree().change_scene_to_file(arena_scene)
+	hide()
+	map_loader.load_map()
+	#get_tree().change_scene_to_file(arena_scene)
