@@ -1,9 +1,8 @@
-[gd_scene load_steps=44 format=3 uid="uid://c844scnvf5jom"]
+[gd_scene load_steps=43 format=3 uid="uid://c844scnvf5jom"]
 
 [ext_resource type="Script" uid="uid://cwbha5s5xynh2" path="res://sonic.gd" id="1_jxrfq"]
 [ext_resource type="SpriteFrames" uid="uid://bdy06gyv3r2tu" path="res://sonic.tres" id="2_a2uvc"]
 [ext_resource type="Texture2D" uid="uid://byvgw5ndbo7je" path="res://sb2nm health bar empty.png" id="3_dsaob"]
-[ext_resource type="Script" uid="uid://cvcxxjs0y3bhc" path="res://state_machine.gd" id="4_eeu7w"]
 [ext_resource type="Texture2D" uid="uid://dwv0yk0hkrvb1" path="res://sb2nm health bar progress.png" id="5_o7udh"]
 [ext_resource type="Script" uid="uid://djh0ymftn0mru" path="res://characters/sonic/health_bar.gd" id="6_mr5q0"]
 [ext_resource type="Script" uid="uid://c84a0ecj6mg3f" path="res://characters/sonic/ichikoro_gauge.gd" id="6_o7udh"]
@@ -1008,9 +1007,6 @@ _data = {
 
 [node name="sonic" type="CharacterBody3D" groups=["Player", "main_sonic"]]
 script = ExtResource("1_jxrfq")
-upper_window_duration = 0.05
-heavy_window_duration = 0.1
-damage = 5
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.09277344, 0)
@@ -1090,9 +1086,6 @@ texture = ExtResource("10_41aki")
 [node name="icon" type="Sprite2D" parent="Camera3D/CanvasLayer/KO counter"]
 position = Vector2(28.571436, 65.47619)
 texture = ExtResource("11_fqyed")
-
-[node name="State Machine" type="Node" parent="."]
-script = ExtResource("4_eeu7w")
 
 [node name="hitbox_right" type="Area3D" parent="."]
 monitoring = false

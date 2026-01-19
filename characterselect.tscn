@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=3 uid="uid://bp17hptes547x"]
+[gd_scene load_steps=38 format=3 uid="uid://bp17hptes547x"]
 
 [ext_resource type="Script" uid="uid://brum6c0fcikjv" path="res://characterselect.gd" id="1_gycgs"]
 [ext_resource type="Script" uid="uid://drlv8j5caiprn" path="res://scripts/map_loader.gd" id="2_y2tqo"]
@@ -14,103 +14,230 @@
 [ext_resource type="Resource" uid="uid://dxjye88c3tkgt" path="res://resources/map packages/library_pack.tres" id="12_uvws2"]
 [ext_resource type="Resource" uid="uid://cn1cdmic73mdf" path="res://resources/map packages/metal_depot_pack.tres" id="13_ijgdi"]
 [ext_resource type="Resource" uid="uid://dxdn1a8b2h0ns" path="res://resources/map packages/tails_lab_pack.tres" id="14_qqb76"]
-[ext_resource type="PackedScene" uid="uid://c844scnvf5jom" path="res://characters/sonic/sonic.tscn" id="15_f5jcp"]
+[ext_resource type="PackedScene" uid="uid://mauh6dm54vxi" path="res://new_characters/sonic/sonic.tscn" id="15_uow27"]
 [ext_resource type="PackedScene" uid="uid://bnuij1366kj5w" path="res://characters/sonic copy/sonic copy sprites/sonic_copy.tscn" id="16_f5jcp"]
+[ext_resource type="Texture2D" uid="uid://dgrx14ktgsvm1" path="res://textures/gui/button_unselected.png" id="17_6j0yv"]
+[ext_resource type="FontFile" uid="uid://6dcex0bpvqw8" path="res://userinterface/customfonts/pixeleum-48-extended.ttf" id="17_bqwm8"]
+[ext_resource type="Texture2D" uid="uid://dw4opm0qtbk0l" path="res://textures/gui/button_selected.png" id="19_owpx6"]
+[ext_resource type="Texture2D" uid="uid://ci1228pb7nnrw" path="res://textures/gui/button_label.png" id="20_uow27"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_uvws2"]
+texture = ExtResource("20_uow27")
+texture_margin_left = 6.0
+texture_margin_top = 6.0
+texture_margin_right = 6.0
+texture_margin_bottom = 6.0
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_s0vaq"]
+texture = ExtResource("17_6j0yv")
+texture_margin_left = 6.0
+texture_margin_top = 6.0
+texture_margin_right = 6.0
+texture_margin_bottom = 6.0
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_talir"]
+texture = ExtResource("19_owpx6")
+texture_margin_left = 6.0
+texture_margin_top = 6.0
+texture_margin_right = 6.0
+texture_margin_bottom = 6.0
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_uow27"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_s0vaq"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_talir"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_uvws2"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_ijgdi"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_qqb76"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_bqtc2"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_u7vhw"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_uiouc"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_km3s5"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_bqwm8"]
+texture = ExtResource("17_6j0yv")
+texture_margin_left = 6.0
+texture_margin_top = 6.0
+texture_margin_right = 6.0
+texture_margin_bottom = 6.0
+expand_margin_left = 4.0
+expand_margin_top = 4.0
+expand_margin_right = 4.0
+expand_margin_bottom = 4.0
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_owpx6"]
+load_path = "res://.godot/imported/button_unselected.png-fceb87ada07cc56b9287cb763ecc236a.ctex"
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_uow27"]
+texture = SubResource("CompressedTexture2D_owpx6")
+texture_margin_left = 6.0
+texture_margin_top = 6.0
+texture_margin_right = 6.0
+texture_margin_bottom = 6.0
+expand_margin_left = 4.0
+expand_margin_top = 4.0
+expand_margin_right = 4.0
+expand_margin_bottom = 4.0
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_owpx6"]
+texture = ExtResource("19_owpx6")
+texture_margin_left = 6.0
+texture_margin_top = 6.0
+texture_margin_right = 6.0
+texture_margin_bottom = 6.0
+expand_margin_left = 4.0
+expand_margin_top = 4.0
+expand_margin_right = 4.0
+expand_margin_bottom = 4.0
 
 [node name="characterselect" type="Control" node_paths=PackedStringArray("map_loader")]
 layout_mode = 3
-anchors_preset = 0
-offset_top = 74.0
-offset_right = 49.0
-offset_bottom = 74.0
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
 script = ExtResource("1_gycgs")
 map_loader = NodePath("MapLoader")
-
-[node name="GridContainer" type="GridContainer" parent="."]
-layout_mode = 0
-offset_left = 98.0
-offset_top = -42.0
-offset_right = 570.0
-offset_bottom = 201.0
-columns = 3
-
-[node name="Player 1" type="Button" parent="GridContainer"]
-layout_mode = 2
-size_flags_horizontal = 3
-text = "Player1
-
-
-
-
-
-"
-icon_alignment = 1
-
-[node name="FocusBox" type="Control" parent="."]
-anchors_preset = 0
-offset_top = 70.0
-offset_right = 49.0
-offset_bottom = 70.0
-
-[node name="Map" type="Button" parent="."]
-layout_mode = 0
-offset_left = 23.0
-offset_top = -76.0
-offset_right = 66.0
-offset_bottom = -22.0
-text = "Map
-
-"
-
-[node name="Rule" type="Button" parent="."]
-layout_mode = 0
-offset_left = 301.0
-offset_top = -76.0
-offset_right = 344.0
-offset_bottom = -22.0
-text = "Rule
-
-"
-
-[node name="MapSelector" type="HBoxContainer" parent="."]
-layout_mode = 0
-anchor_left = 12.551021
-anchor_right = 17.306122
-offset_top = -42.0
-offset_bottom = -2.0
-metadata/_edit_use_anchors_ = true
-
-[node name="Previous" type="Button" parent="MapSelector"]
-custom_minimum_size = Vector2(40, 40)
-layout_mode = 2
-text = "<"
-
-[node name="CurrentMap" type="Label" parent="MapSelector"]
-custom_minimum_size = Vector2(145, 0)
-layout_mode = 2
-text = "Emerald Beach"
-horizontal_alignment = 1
-
-[node name="Next" type="Button" parent="MapSelector"]
-custom_minimum_size = Vector2(40, 40)
-layout_mode = 2
-text = ">"
 
 [node name="MapLoader" type="Node3D" parent="." node_paths=PackedStringArray("arena_root", "song_player", "right_button", "current_map_l", "left_button")]
 script = ExtResource("2_y2tqo")
 map_packages = Array[ExtResource("3_4leu1")]([ExtResource("4_3wopw"), ExtResource("5_f5jcp"), ExtResource("6_6j0yv"), ExtResource("7_bqwm8"), ExtResource("8_owpx6"), ExtResource("9_uow27"), ExtResource("10_s0vaq"), ExtResource("11_talir"), ExtResource("12_uvws2"), ExtResource("13_ijgdi"), ExtResource("14_qqb76")])
 arena_root = NodePath("ArenaRoot")
 song_player = NodePath("SongPlayer")
-right_button = NodePath("../MapSelector/Next")
-current_map_l = NodePath("../MapSelector/CurrentMap")
-left_button = NodePath("../MapSelector/Previous")
-player_char = ExtResource("15_f5jcp")
+right_button = NodePath("../BG/VBoxContainer/MapSelectOptions/HBoxContainer/Next")
+current_map_l = NodePath("../BG/VBoxContainer/MapSelectOptions/HBoxContainer/CurrentMap")
+left_button = NodePath("../BG/VBoxContainer/MapSelectOptions/HBoxContainer/Previous")
+player_char = ExtResource("15_uow27")
 enemy_char = ExtResource("16_f5jcp")
 
 [node name="SongPlayer" type="AudioStreamPlayer" parent="MapLoader"]
 
 [node name="ArenaRoot" type="Node3D" parent="MapLoader"]
 
-[connection signal="pressed" from="GridContainer/Player 1" to="." method="_on_button_pressed"]
-[connection signal="pressed" from="MapSelector/Previous" to="MapLoader" method="_on_previous_pressed"]
-[connection signal="pressed" from="MapSelector/Next" to="MapLoader" method="_on_next_pressed"]
+[node name="BG" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.5803922, 0.8, 1, 1)
+
+[node name="VBoxContainer" type="VBoxContainer" parent="BG"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.40898436
+anchor_top = 0.30555555
+anchor_right = 0.59101564
+anchor_bottom = 0.6944444
+offset_left = 96.5
+offset_top = 120.0
+offset_right = -96.5
+offset_bottom = -119.99997
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 12
+metadata/_edit_use_anchors_ = true
+
+[node name="TrainingLabel" type="Label" parent="BG/VBoxContainer"]
+layout_mode = 2
+theme_override_colors/font_outline_color = Color(0.305452, 0.30545202, 0.305452, 1)
+theme_override_constants/outline_size = 8
+theme_override_fonts/font = ExtResource("17_bqwm8")
+theme_override_font_sizes/font_size = 28
+theme_override_styles/normal = SubResource("StyleBoxTexture_uvws2")
+text = "TRAINING"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="MapSelectLabel" type="Label" parent="BG/VBoxContainer"]
+layout_mode = 2
+theme_override_colors/font_outline_color = Color(0.305452, 0.30545202, 0.305452, 1)
+theme_override_constants/outline_size = 8
+theme_override_fonts/font = ExtResource("17_bqwm8")
+theme_override_font_sizes/font_size = 28
+theme_override_styles/normal = SubResource("StyleBoxTexture_uvws2")
+text = "Map Selection"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="MapSelectOptions" type="Label" parent="BG/VBoxContainer"]
+layout_mode = 2
+theme_override_colors/font_outline_color = Color(0.305452, 0.30545202, 0.305452, 1)
+theme_override_constants/outline_size = 8
+theme_override_fonts/font = ExtResource("17_bqwm8")
+theme_override_font_sizes/font_size = 28
+theme_override_styles/normal = SubResource("StyleBoxTexture_s0vaq")
+theme_override_styles/focus = SubResource("StyleBoxTexture_talir")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="HBoxContainer" type="HBoxContainer" parent="BG/VBoxContainer/MapSelectOptions"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+alignment = 1
+metadata/_edit_use_anchors_ = true
+
+[node name="Previous" type="Button" parent="BG/VBoxContainer/MapSelectOptions/HBoxContainer"]
+custom_minimum_size = Vector2(40, 20)
+layout_mode = 2
+theme_override_constants/outline_size = 6
+theme_override_fonts/font = ExtResource("17_bqwm8")
+theme_override_font_sizes/font_size = 24
+theme_override_styles/normal = SubResource("StyleBoxEmpty_uow27")
+theme_override_styles/pressed = SubResource("StyleBoxEmpty_s0vaq")
+theme_override_styles/hover = SubResource("StyleBoxEmpty_talir")
+theme_override_styles/disabled = SubResource("StyleBoxEmpty_uvws2")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_ijgdi")
+text = "<"
+
+[node name="CurrentMap" type="Label" parent="BG/VBoxContainer/MapSelectOptions/HBoxContainer"]
+custom_minimum_size = Vector2(145, 0)
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/outline_size = 6
+theme_override_fonts/font = ExtResource("17_bqwm8")
+text = "Emerald Beach"
+horizontal_alignment = 1
+
+[node name="Next" type="Button" parent="BG/VBoxContainer/MapSelectOptions/HBoxContainer"]
+custom_minimum_size = Vector2(40, 20)
+layout_mode = 2
+theme_override_constants/outline_size = 6
+theme_override_fonts/font = ExtResource("17_bqwm8")
+theme_override_font_sizes/font_size = 24
+theme_override_styles/normal = SubResource("StyleBoxEmpty_qqb76")
+theme_override_styles/pressed = SubResource("StyleBoxEmpty_bqtc2")
+theme_override_styles/hover = SubResource("StyleBoxEmpty_u7vhw")
+theme_override_styles/disabled = SubResource("StyleBoxEmpty_uiouc")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_km3s5")
+text = ">"
+
+[node name="StartButton" type="Button" parent="BG/VBoxContainer"]
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 6
+theme_override_fonts/font = ExtResource("17_bqwm8")
+theme_override_font_sizes/font_size = 28
+theme_override_styles/normal = SubResource("StyleBoxTexture_bqwm8")
+theme_override_styles/pressed = SubResource("StyleBoxTexture_uow27")
+theme_override_styles/hover = SubResource("StyleBoxTexture_owpx6")
+text = "Start Game"
+
+[connection signal="pressed" from="BG/VBoxContainer/MapSelectOptions/HBoxContainer/Previous" to="MapLoader" method="_on_previous_pressed"]
+[connection signal="pressed" from="BG/VBoxContainer/MapSelectOptions/HBoxContainer/Next" to="MapLoader" method="_on_next_pressed"]
+[connection signal="pressed" from="BG/VBoxContainer/StartButton" to="." method="_on_start_button_pressed"]
