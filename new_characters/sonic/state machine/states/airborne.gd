@@ -1,6 +1,6 @@
 extends SonicState
 
-var coyote_time_max : float = 0.12 # 120 ms
+var coyote_time_max : float = 0.15 # 150 ms
 # how long has sonic been off the ground
 var airborne_duration : float = 0.0
 
@@ -9,7 +9,7 @@ func _on_enter(_context : Dictionary = {}) -> void:
 	
 	if _context.has("HasJumped"):
 		sonic.velocity.y = sonic.jump_force
-		# if sonic jump coyote time is not possible
+		# If sonic jumps, coyote time is not possible.
 		airborne_duration = 100
 
 func _on_exit() -> void:
@@ -25,6 +25,7 @@ func _on_physics_update(delta : float) -> void:
 	# coyote jump!
 	if airborne_duration < coyote_time_max and Input.is_action_just_pressed("jump"):
 		sonic.velocity.y = sonic.jump_force
+		print("Coyote Jump!")
 	
 	sonic.apply_gravity(delta)
 	sonic.handle_ground_movement(delta)

@@ -1,7 +1,9 @@
 extends CharacterBody3D
 class_name Sonic
 
-#@export var root_body : Node3D
+@export_group("Node requirments")
+@export var shadow : AnimatedSprite3D
+@export var shadow_ray : RayCast3D
 
 var top_speed : float = 2.4
 var accel : float = 30.0
@@ -20,6 +22,7 @@ var ground_speed : float = 0.0
 
 func _process(_delta: float) -> void:
 	_handle_input()
+	handle_shadow()
 
 func _handle_input() -> void:
 	input = Input.get_vector("left","right","forward","backward")
@@ -68,55 +71,22 @@ func apply_velocity(delta : float) -> void:
 		velocity = (velocity - up_vel).move_toward(target_velocity,acceleration * delta) + up_vel
 	move_and_slide()
 
-#func _physics_process(delta: float) -> void:
-	#handle_input()
-	#
-	#handle_gravity(delta)
-	#
-	#handle_jump()
-	#
-	#handle_accelerations(delta)
-	#
-	#move_and_slide()
-	#
-	#velocity_angle = atan2(velocity.x,velocity.z)
-	##if not velocity.is_equal_approx(Vector3.ZERO):
-		##root_body.rotation.y = lerp_angle(root_body.rotation.y,velocity_angle - PI,visual_rot_smoothing * delta)
-#
-#func handle_input() -> void:
-	#input = Input.get_vector("move_left","move_right","move_forward","move_backward")
-#
-#func handle_gravity(delta : float) -> void:
-	#if velocity.y < 0.0:
-		#velocity.y -= fall_gravity * delta
-	#elif not is_on_floor():
-		#velocity.y -= gravity * delta
-	#
-#
-#func handle_jump() -> void:
-	#if Input.is_action_just_pressed("jump") and is_on_floor():
-		#velocity.y = jump_force
-	#
-	#if Input.is_action_just_released("jump") and velocity.y > 0.0:
-		#velocity.y *= 0.5
-		##velocity.y -= jump_force / 2.0
-#
-#func handle_accelerations(delta : float) -> void:
-	#
-	#var current_accel : float = accel
-	#
-	#var desired_dir : float = velocity.normalized().dot(Vector3(input.x,0.0,input.y))
-	#
-	#if desired_dir < 0.0:
-		#print("Oh, wait a minute!")
-		#current_accel = deccel
-	#
-	#var up_velocity : Vector3 = Vector3.UP.normalized() * velocity.dot(Vector3.UP)
-	#
-	#var target_velocity : Vector3 = Vector3(input.x,0.0,input.y) * top_speed
-	#
-	#if input.is_equal_approx(Vector2.ZERO) and is_on_floor():
-		#current_accel = friction
-		#
-	#if is_on_floor() or not input.is_equal_approx(Vector2.ZERO):
-		#velocity = (velocity - up_velocity).move_toward(target_velocity,current_accel * delta) + up_velocity
+func handle_shadow() -> void:
+	var max_height : float = 1.0
+	if not shadow.top_level:
+		shadow.top_level = true
+		
+	shadow_ray.force_raycast_update()
+	
+	if shadow_ray.is_colliding():
+		var point : Vector3 = shadow_ray.get_collision_point()
+		
+		var y_offset : float = 0.04
+		var z_offset : float = 0.05
+		
+		shadow.global_position = point + Vector3(0.0,y_offset,-z_offset)
+		var dist : float = point.distance_to(global_position)
+		var ratio : float = dist / max_height
+		
+		var convert_to_frames : int = int(ratio * 4.0)
+		shadow.frame = clampi(convert_to_frames,0,3)

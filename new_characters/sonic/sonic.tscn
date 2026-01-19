@@ -1,4 +1,4 @@
-[gd_scene load_steps=197 format=3 uid="uid://mauh6dm54vxi"]
+[gd_scene load_steps=203 format=3 uid="uid://mauh6dm54vxi"]
 
 [ext_resource type="Texture2D" uid="uid://6jrpbsxm81kr" path="res://sonic.png" id="1_56lgg"]
 [ext_resource type="Script" uid="uid://qmcrqa243th5" path="res://new_characters/sonic/sonic.gd" id="1_sloj2"]
@@ -7,6 +7,7 @@
 [ext_resource type="Script" uid="uid://bolrd8gvhod61" path="res://new_characters/sonic/state machine/states/idle.gd" id="5_pfx0n"]
 [ext_resource type="Script" uid="uid://7ivd4d4y0knp" path="res://new_characters/sonic/state machine/states/ground.gd" id="6_ywm6m"]
 [ext_resource type="Script" uid="uid://bwu2b8oreqwu4" path="res://new_characters/sonic/state machine/states/airborne.gd" id="7_6p2ki"]
+[ext_resource type="Texture2D" uid="uid://clrs1488rjd3g" path="res://textures/shadow.png" id="8_7kcxy"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_eeu7w"]
 atlas = ExtResource("1_56lgg")
@@ -1485,13 +1486,51 @@ size = Vector3(0.2, 0.05, 0.2)
 [sub_resource type="BoxShape3D" id="BoxShape3D_56lgg"]
 size = Vector3(0.15, 0.3, 0.15)
 
-[node name="Sonic" type="CharacterBody3D"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_7kcxy"]
+atlas = ExtResource("8_7kcxy")
+region = Rect2(99, 0, 32, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_l63bm"]
+atlas = ExtResource("8_7kcxy")
+region = Rect2(66, 0, 32, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_lyhei"]
+atlas = ExtResource("8_7kcxy")
+region = Rect2(33, 0, 32, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_hesga"]
+atlas = ExtResource("8_7kcxy")
+region = Rect2(0, 0, 32, 16)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_avpmp"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_7kcxy")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_l63bm")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_lyhei")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_hesga")
+}],
+"loop": true,
+"name": &"shadow",
+"speed": 5.0
+}]
+
+[node name="Sonic" type="CharacterBody3D" node_paths=PackedStringArray("shadow", "shadow_ray")]
 collision_layer = 2
 collision_mask = 3
 script = ExtResource("1_sloj2")
+shadow = NodePath("Shadow")
+shadow_ray = NodePath("ShadowRay")
 
 [node name="Animator" type="AnimatedSprite3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.17, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.23, 0)
 texture_filter = 2
 sprite_frames = SubResource("SpriteFrames_cd0fl")
 animation = &"Idle"
@@ -1527,3 +1566,16 @@ script = ExtResource("7_6p2ki")
 
 [node name="Camera3D" type="Camera3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 0.9659259, 0.25881907, 0, -0.25881907, 0.9659259, 0, 0.77175, 1.4)
+
+[node name="Shadow" type="AnimatedSprite3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.04, 0.05)
+modulate = Color(1, 1, 1, 0.49019608)
+billboard = 2
+texture_filter = 2
+render_priority = -1
+sprite_frames = SubResource("SpriteFrames_avpmp")
+animation = &"shadow"
+
+[node name="ShadowRay" type="RayCast3D" parent="."]
+enabled = false
+target_position = Vector3(0, -2, 0)

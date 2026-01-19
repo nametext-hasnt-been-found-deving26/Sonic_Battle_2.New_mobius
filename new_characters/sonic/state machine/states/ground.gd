@@ -16,12 +16,14 @@ func _on_physics_update(delta : float) -> void:
 	handle_transitions()
 
 func handle_transitions() -> void:
-	if sonic.input.is_equal_approx(Vector2.ZERO):
-		transition("Idle")
-		return
+	
 	
 	if Input.is_action_just_pressed("jump") and sonic.is_on_floor():
 		transition("Airborne", {"HasJumped" : true})
+		return
+	
+	if sonic.input.is_equal_approx(Vector2.ZERO) and sonic.is_on_floor():
+		transition("Idle")
 		return
 	
 	if not sonic.is_on_floor():
