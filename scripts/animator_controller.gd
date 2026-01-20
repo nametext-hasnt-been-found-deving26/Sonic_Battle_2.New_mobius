@@ -32,6 +32,7 @@ func set_base(anim : String) -> void:
 
 func play(animation : String, is_temp : bool = false) -> void:
 	if !animator or !animator.sprite_frames.has_animation(animation):
+		print("Animation not found %s" % animation)
 		return
 	
 	animator.play(animation)

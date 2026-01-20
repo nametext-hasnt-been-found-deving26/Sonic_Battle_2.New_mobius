@@ -28,10 +28,6 @@ func _process(_delta: float) -> void:
 	_handle_input()
 	handle_shadow()
 	
-	if input.x != 0:
-		if facing_dir != sign(input.x):
-			facing_dir = sign(input.x)
-			animator.flip_h = facing_dir != 1
 
 
 func _physics_process(_delta: float) -> void:
