@@ -1439,8 +1439,8 @@ animations = [{
 "texture": SubResource("AtlasTexture_2mdid")
 }],
 "loop": false,
-"name": &"Turning around while running ",
-"speed": 12.0
+"name": &"Turning around fast",
+"speed": 14.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -1522,32 +1522,33 @@ animations = [{
 "speed": 5.0
 }]
 
-[node name="Sonic" type="CharacterBody3D" node_paths=PackedStringArray("shadow", "shadow_ray")]
+[node name="Sonic" type="CharacterBody3D" node_paths=PackedStringArray("shadow", "shadow_ray", "animator")]
 collision_layer = 2
 collision_mask = 3
 script = ExtResource("1_sloj2")
 shadow = NodePath("Shadow")
 shadow_ray = NodePath("ShadowRay")
+animator = NodePath("Animator")
 
 [node name="Animator" type="AnimatedSprite3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.23, 0)
 texture_filter = 2
 sprite_frames = SubResource("SpriteFrames_cd0fl")
-animation = &"Idle"
+animation = &"Turning around fast"
 autoplay = "Idle"
-frame_progress = 0.43293962
+frame = 3
+frame_progress = 1.0
 
 [node name="GroundCollision" type="CollisionShape3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.025, 0)
 shape = SubResource("BoxShape3D_6p2ki")
 
 [node name="HurtBoxArea" type="Area3D" parent="."]
-visible = false
 collision_layer = 4
 collision_mask = 4
 
 [node name="HurtBox" type="CollisionShape3D" parent="HurtBoxArea"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.16485196, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.2204611, 0)
 shape = SubResource("BoxShape3D_56lgg")
 debug_color = Color(0.09411765, 0.44313726, 0, 1)
 

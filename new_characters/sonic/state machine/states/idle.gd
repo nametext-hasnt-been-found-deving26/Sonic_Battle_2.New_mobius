@@ -2,10 +2,18 @@ extends SonicState
 
 
 func _on_enter(_context : Dictionary = {}) -> void:
-	print("Entered %s" % name)
+	#print("Entered %s" % name)
+	sonic.animator_ctrl.set_base("Idle")
+	
+	if _context.has("Stopping"):
+		var stopping : bool = _context.get("Stopping")
+		
+		if stopping:
+			sonic.animator_ctrl.play("Stopping",true)
 
 func _on_exit() -> void:
-	print("Exited %s" % name)
+	#print("Exited %s" % name)
+	pass
 
 func _on_update_(_delta : float) -> void:
 	pass

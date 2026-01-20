@@ -3,6 +3,7 @@ class_name StateMachine
 
 ## Prints the enter and exit functions in each state.
 @export var initial_state : String = "Idle"
+@export var debug_mode : bool = false
 var _states : Dictionary = {}
 var _current_state : State
 
@@ -38,6 +39,10 @@ func _process(delta: float) -> void:
 		_current_state._on_update(delta)
 
 func transition_to(_state : String, _context : Dictionary = {}) -> void:
+	
+	if debug_mode:
+		print("Exited %s" % _current_state.name)
+		print("Entered %s" % _state)
 	
 	if not has_state(_state):
 		print("Failed to transition from (%s) to the next state (%s)" % [_current_state.name,_state])

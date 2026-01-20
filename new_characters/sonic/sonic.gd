@@ -4,10 +4,13 @@ class_name Sonic
 @export_group("Node requirments")
 @export var shadow : AnimatedSprite3D
 @export var shadow_ray : RayCast3D
+@export var animator : AnimatedSprite3D
+
+@onready var animator_ctrl : AnimatorController = AnimatorController.new(animator)
 
 var top_speed : float = 2.4
-var accel : float = 30.0
-var decel : float = 50.0
+var accel : float = 20.0
+var decel : float = 40.0
 var air_accel : float = 8.0
 var friction : float = 35.0
 var jump_force : float = 3.4
@@ -16,6 +19,7 @@ var fall_gravity : float = 16.0
 
 
 var input : Vector2 = Vector2.ZERO
+var facing_dir : int = 1
 var acceleration : float = accel
 var ground_speed : float = 0.0
 
@@ -23,6 +27,15 @@ var ground_speed : float = 0.0
 func _process(_delta: float) -> void:
 	_handle_input()
 	handle_shadow()
+	
+	if input.x != 0:
+		if facing_dir != sign(input.x):
+			facing_dir = sign(input.x)
+			animator.flip_h = facing_dir != 1
+
+
+func _physics_process(_delta: float) -> void:
+	animator_ctrl.update()
 
 func _handle_input() -> void:
 	input = Input.get_vector("left","right","forward","backward")
@@ -38,7 +51,7 @@ func handle_ground_movement(delta : float) -> void:
 	acceleration = accel
 	
 	# Compute the dot product of the velocity.
-	var desired_dir : float = velocity.normalized().dot(Vector3(input.x,0.0,input.y))
+	var desired_dir : float = velocity.normalized().dot(Vector3(input.x,0.0,input.y).normalized())
 	
 	# Compare the flat velocity and see if its not aligned
 	# e.g When moving forward and pressing forward the dot prod of it is 1.
@@ -70,6 +83,12 @@ func apply_velocity(delta : float) -> void:
 		var target_velocity : Vector3 = Vector3(input.x,0.0,input.y) * top_speed
 		velocity = (velocity - up_vel).move_toward(target_velocity,acceleration * delta) + up_vel
 	move_and_slide()
+
+func has_turned_around() -> bool:
+	var horizontal_dir : Vector3 = Vector3.RIGHT * velocity.dot(Vector3.RIGHT)
+	var turning_dir : float = horizontal_dir.dot(Vector3(input.x,0.0,input.y))
+	
+	return turning_dir < 0.0 or facing_dir != (sign(input.x) if input.x != 0 else facing_dir)
 
 func handle_shadow() -> void:
 	var max_height : float = 1.0
