@@ -1,0 +1,72 @@
+[gd_scene load_steps=11 format=3 uid="uid://bsypklk1lp5hn"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_ehk82"]
+
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_6pqxc"]
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_n2o5g"]
+load_path = "res://.godot/imported/shadow .png-e4ff40ff511a16798d7d9214e1feb1f5.ctex"
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_icb2k"]
+atlas = SubResource("CompressedTexture2D_n2o5g")
+region = Rect2(0, 0, 64, 67)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ov1mx"]
+atlas = SubResource("CompressedTexture2D_n2o5g")
+region = Rect2(64, 0, 64, 67)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_eeawa"]
+atlas = SubResource("CompressedTexture2D_n2o5g")
+region = Rect2(128, 0, 64, 67)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ivn5u"]
+atlas = SubResource("CompressedTexture2D_n2o5g")
+region = Rect2(192, 0, 64, 67)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_jn06o"]
+atlas = SubResource("CompressedTexture2D_n2o5g")
+region = Rect2(256, 0, 64, 67)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_dwtf4"]
+atlas = SubResource("CompressedTexture2D_n2o5g")
+region = Rect2(320, 0, 64, 67)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_xlb2y"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_icb2k")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ov1mx")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_eeawa")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ivn5u")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_jn06o")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_dwtf4")
+}],
+"loop": true,
+"name": &"Idle",
+"speed": 5.0
+}]
+
+[node name="shadow" type="CharacterBody3D"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+shape = SubResource("CapsuleShape3D_ehk82")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="CollisionShape3D"]
+visible = false
+mesh = SubResource("CapsuleMesh_6pqxc")
+
+[node name="AnimatedSprite3D" type="AnimatedSprite3D" parent="."]
+sprite_frames = SubResource("SpriteFrames_xlb2y")
+animation = &"Idle"
+frame_progress = 0.11696798

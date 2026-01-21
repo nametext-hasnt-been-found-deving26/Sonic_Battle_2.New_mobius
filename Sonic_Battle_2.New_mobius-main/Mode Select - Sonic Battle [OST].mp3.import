@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://b7k8v0m1rr7se"
+path="res://.godot/imported/Mode Select - Sonic Battle [OST].mp3-125dfa630048500f28c00a9bcfc532ad.mp3str"
+
+[deps]
+
+source_file="res://Mode Select - Sonic Battle [OST].mp3"
+dest_files=["res://.godot/imported/Mode Select - Sonic Battle [OST].mp3-125dfa630048500f28c00a9bcfc532ad.mp3str"]
+
+[params]
+
+loop=true
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

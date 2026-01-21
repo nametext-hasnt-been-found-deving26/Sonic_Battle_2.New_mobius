@@ -1,0 +1,59 @@
+[gd_scene load_steps=2 format=3 uid="uid://bp17hptes547x"]
+
+[ext_resource type="Script" uid="uid://brum6c0fcikjv" path="res://characterselect.gd" id="1_gycgs"]
+
+[node name="characterselect" type="Control"]
+layout_mode = 3
+anchors_preset = 0
+offset_top = 74.0
+offset_right = 49.0
+offset_bottom = 74.0
+script = ExtResource("1_gycgs")
+
+[node name="GridContainer" type="GridContainer" parent="."]
+layout_mode = 0
+offset_left = 98.0
+offset_top = -42.0
+offset_right = 570.0
+offset_bottom = 201.0
+columns = 3
+
+[node name="Player 1" type="Button" parent="GridContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Player1
+
+
+
+
+
+"
+icon_alignment = 1
+
+[node name="FocusBox" type="Control" parent="."]
+anchors_preset = 0
+offset_top = 70.0
+offset_right = 49.0
+offset_bottom = 70.0
+
+[node name="Map" type="Button" parent="."]
+layout_mode = 0
+offset_left = 23.0
+offset_top = -76.0
+offset_right = 66.0
+offset_bottom = -22.0
+text = "Map
+
+"
+
+[node name="Rule" type="Button" parent="."]
+layout_mode = 0
+offset_left = 301.0
+offset_top = -76.0
+offset_right = 344.0
+offset_bottom = -22.0
+text = "Rule
+
+"
+
+[connection signal="pressed" from="GridContainer/Player 1" to="." method="_on_button_pressed"]

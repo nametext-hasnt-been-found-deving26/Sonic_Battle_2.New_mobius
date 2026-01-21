@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://c15ch1vx7fs28"
+path="res://.godot/imported/Emerald Beach - Sonic Battle [OST].mp3-b4ef23143ce7d40c6105e583f5f148de.mp3str"
+
+[deps]
+
+source_file="res://Emerald Beach - Sonic Battle [OST].mp3"
+dest_files=["res://.godot/imported/Emerald Beach - Sonic Battle [OST].mp3-b4ef23143ce7d40c6105e583f5f148de.mp3str"]
+
+[params]
+
+loop=true
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

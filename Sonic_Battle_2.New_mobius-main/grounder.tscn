@@ -1,0 +1,124 @@
+[gd_scene load_steps=18 format=3 uid="uid://cn0t3un85p4xy"]
+
+[ext_resource type="Texture2D" uid="uid://7l4s5qeln1iy" path="res://characters/grounder/grounder sprites/Grounder.png" id="1_1x68f"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_pqwjt"]
+
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_p4gy1"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_qnveo"]
+atlas = ExtResource("1_1x68f")
+region = Rect2(0, 0, 115, 77)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ughyg"]
+atlas = ExtResource("1_1x68f")
+region = Rect2(115, 0, 115, 77)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_7ceod"]
+atlas = ExtResource("1_1x68f")
+region = Rect2(230, 0, 115, 77)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_sx7wc"]
+atlas = ExtResource("1_1x68f")
+region = Rect2(345, 0, 115, 77)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_b3qvd"]
+atlas = ExtResource("1_1x68f")
+region = Rect2(460, 0, 115, 77)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_a7pt1"]
+atlas = ExtResource("1_1x68f")
+region = Rect2(575, 0, 115, 77)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_firus"]
+atlas = ExtResource("1_1x68f")
+region = Rect2(690, 0, 115, 77)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_mupvg"]
+atlas = ExtResource("1_1x68f")
+region = Rect2(690, 0, 115, 79)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_xgdct"]
+atlas = ExtResource("1_1x68f")
+region = Rect2(805, 0, 115, 79)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_veyi6"]
+atlas = ExtResource("1_1x68f")
+region = Rect2(920, 0, 115, 79)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_wrwhh"]
+atlas = ExtResource("1_1x68f")
+region = Rect2(1035, 0, 115, 79)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2257x"]
+atlas = ExtResource("1_1x68f")
+region = Rect2(0, 79, 115, 79)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_buqal"]
+atlas = ExtResource("1_1x68f")
+region = Rect2(115, 79, 115, 79)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_qa8no"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_qnveo")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ughyg")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_7ceod")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_sx7wc")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_b3qvd")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_a7pt1")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_firus")
+}],
+"loop": true,
+"name": &"Idle",
+"speed": 8.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_mupvg")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_xgdct")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_veyi6")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_wrwhh")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_2257x")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_buqal")
+}],
+"loop": true,
+"name": &"Jumping",
+"speed": 8.0
+}]
+
+[node name="grounder" type="CharacterBody3D"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+shape = SubResource("CapsuleShape3D_pqwjt")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+visible = false
+mesh = SubResource("CapsuleMesh_p4gy1")
+
+[node name="AnimatedSprite3D" type="AnimatedSprite3D" parent="."]
+sprite_frames = SubResource("SpriteFrames_qa8no")
+animation = &"Idle"

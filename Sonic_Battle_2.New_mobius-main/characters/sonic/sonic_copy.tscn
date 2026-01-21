@@ -1,0 +1,5 @@
+[gd_scene load_steps=2 format=3 uid="uid://dbaiesi7w8spp"]
+
+[ext_resource type="PackedScene" uid="uid://bnuij1366kj5w" path="res://characters/sonic copy/sonic copy sprites/sonic_copy.tscn" id="1_mn7vs"]
+
+[node name="sonic copy" groups=["Player"] instance=ExtResource("1_mn7vs")]

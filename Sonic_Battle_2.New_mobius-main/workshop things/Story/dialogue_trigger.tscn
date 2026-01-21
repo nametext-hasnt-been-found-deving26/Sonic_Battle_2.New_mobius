@@ -1,0 +1,14 @@
+[gd_scene load_steps=3 format=3 uid="uid://cia0wxrsiphjk"]
+
+[ext_resource type="Script" uid="uid://dclmo1sm1ayjx" path="res://dialogue_trigger.gd" id="1_r6fa2"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_hrqnh"]
+
+[node name="dialogue_trigger" type="Node3D"]
+script = ExtResource("1_r6fa2")
+dialogues = Array[String](["", "", "", "", ""])
+
+[node name="trigger" type="Area3D" parent="."]
+
+[node name="collision" type="CollisionShape3D" parent="trigger"]
+shape = SubResource("BoxShape3D_hrqnh")

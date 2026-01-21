@@ -1,0 +1,31 @@
+[gd_scene load_steps=6 format=3 uid="uid://bgciucvma1pfg"]
+
+[ext_resource type="PackedScene" uid="uid://b4utdyvi5x0jp" path="res://levels/emerald beach/models/city-noprops.glb" id="1_hs7m4"]
+[ext_resource type="PackedScene" uid="uid://cw4mee85ro4f6" path="res://characters/sonic/sonic.tscn" id="2_tq8my"]
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_hs7m4"]
+sky_top_color = Color(0.297, 0.44825003, 0.66, 1)
+sky_horizon_color = Color(0.80639994, 0.81927997, 0.84, 1)
+
+[sub_resource type="Sky" id="Sky_tq8my"]
+sky_material = SubResource("ProceduralSkyMaterial_hs7m4")
+
+[sub_resource type="Environment" id="Environment_csyn1"]
+background_mode = 2
+sky = SubResource("Sky_tq8my")
+ambient_light_source = 3
+ambient_light_sky_contribution = 0.48
+
+[node name="CityLevel" type="Node3D"]
+
+[node name="city-noprops" parent="." instance=ExtResource("1_hs7m4")]
+
+[node name="sonic" parent="." instance=ExtResource("2_tq8my")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.74700725, 0)
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_csyn1")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="WorldEnvironment"]
+transform = Transform3D(-0.091837324, -0.8264522, 0.5554662, -0.13481036, 0.5630069, 0.815383, -0.98660636, 0, -0.16311936, 10.46586, 3.5086465, 0)
+shadow_enabled = true

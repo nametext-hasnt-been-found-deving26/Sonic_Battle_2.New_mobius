@@ -1,0 +1,17 @@
+[remap]
+
+importer="font_data_bmfont"
+type="FontFile"
+uid="uid://33km05s5ewag"
+path="res://.godot/imported/KO numbers.fnt-ce9bbf58d60b6fbab0cf852cc1dbd35e.fontdata"
+
+[deps]
+
+source_file="res://KO numbers.fnt"
+dest_files=["res://.godot/imported/KO numbers.fnt-ce9bbf58d60b6fbab0cf852cc1dbd35e.fontdata"]
+
+[params]
+
+fallbacks=[]
+compress=true
+scaling_mode=0

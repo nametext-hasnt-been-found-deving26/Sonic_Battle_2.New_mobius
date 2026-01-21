@@ -1,0 +1,28 @@
+[gd_scene load_steps=2 format=3 uid="uid://umbybxqu5yih"]
+
+[sub_resource type="GDScript" id="GDScript_i0c6m"]
+resource_name = "Char_Loader"
+script/source = "# Char_Loader.gd
+# Now supports loading from a CharacterData resource
+# Works like MUGEN’s DEF files but in Godot-style
+
+extends Node3D
+
+@export var character_data: Resource  # Assign a CharacterData .tres file
+@export var spawn_point: NodePath
+
+func _ready():
+	if character_data and character_data is CharacterData:
+		var character_scene = character_data.scene
+		var instance = character_scene.instantiate()
+		var spawn = get_node(spawn_point)
+		spawn.add_child(instance)
+		instance.global_position = spawn.global_position
+	else:
+		push_warning(\"No valid CharacterData resource assigned.\")
+"
+
+[node name="CharacterData" type="Node"]
+
+[node name="Char_Loader" type="Node" parent="."]
+script = SubResource("GDScript_i0c6m")

@@ -1,0 +1,18 @@
+[gd_scene load_steps=4 format=3 uid="uid://dnafvcy2rm02v"]
+
+[ext_resource type="Script" uid="uid://bwhw0c085rxnn" path="res://character_body_3d.gd" id="1_4jmlw"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_0rsxp"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_yl7ty"]
+animations = []
+
+[node name="metal sonic" type="CharacterBody3D"]
+script = ExtResource("1_4jmlw")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+shape = SubResource("CapsuleShape3D_0rsxp")
+
+[node name="AnimatedSprite3D" type="AnimatedSprite3D" parent="."]
+sprite_frames = SubResource("SpriteFrames_yl7ty")
+animation = &""

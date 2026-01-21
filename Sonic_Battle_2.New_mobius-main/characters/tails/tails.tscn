@@ -1,0 +1,85 @@
+[gd_scene load_steps=13 format=3 uid="uid://b0n608hf2uhqh"]
+
+[ext_resource type="Texture2D" uid="uid://b26g4xqy1t0xp" path="res://characters/tails/tails sprites/Tails.png" id="1_ngpk6"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_mr0ka"]
+
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_hae8f"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_r2omb"]
+atlas = ExtResource("1_ngpk6")
+region = Rect2(0, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_rc3ei"]
+atlas = ExtResource("1_ngpk6")
+region = Rect2(64, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_j4ecp"]
+atlas = ExtResource("1_ngpk6")
+region = Rect2(128, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8pply"]
+atlas = ExtResource("1_ngpk6")
+region = Rect2(192, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_mmsrm"]
+atlas = ExtResource("1_ngpk6")
+region = Rect2(256, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_hoptx"]
+atlas = ExtResource("1_ngpk6")
+region = Rect2(320, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_64udq"]
+atlas = ExtResource("1_ngpk6")
+region = Rect2(384, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_mlihe"]
+atlas = ExtResource("1_ngpk6")
+region = Rect2(448, 0, 64, 64)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_myb4o"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_r2omb")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_rc3ei")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_j4ecp")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8pply")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_mmsrm")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_hoptx")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_64udq")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_mlihe")
+}],
+"loop": true,
+"name": &"Idle",
+"speed": 8.0
+}]
+
+[node name="tails" type="CharacterBody3D"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+shape = SubResource("CapsuleShape3D_mr0ka")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+visible = false
+mesh = SubResource("CapsuleMesh_hae8f")
+
+[node name="AnimatedSprite3D" type="AnimatedSprite3D" parent="."]
+sprite_frames = SubResource("SpriteFrames_myb4o")
+animation = &"Idle"
+frame_progress = 0.9946955

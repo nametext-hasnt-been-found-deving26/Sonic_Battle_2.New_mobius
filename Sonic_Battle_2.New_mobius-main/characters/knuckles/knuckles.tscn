@@ -1,0 +1,81 @@
+[gd_scene load_steps=12 format=3 uid="uid://cp5na7j0sx4iu"]
+
+[ext_resource type="Texture2D" uid="uid://txhlkm2551pe" path="res://characters/knuckles/knuckles sprites/knuckles.png" id="1_2gn8l"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_2wn53"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5ic8k"]
+atlas = ExtResource("1_2gn8l")
+region = Rect2(0, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_24wvc"]
+atlas = ExtResource("1_2gn8l")
+region = Rect2(64, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_b47g8"]
+atlas = ExtResource("1_2gn8l")
+region = Rect2(128, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_bvjda"]
+atlas = ExtResource("1_2gn8l")
+region = Rect2(192, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_qqxp3"]
+atlas = ExtResource("1_2gn8l")
+region = Rect2(256, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_3w64y"]
+atlas = ExtResource("1_2gn8l")
+region = Rect2(320, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_vo28c"]
+atlas = ExtResource("1_2gn8l")
+region = Rect2(384, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_jiydq"]
+atlas = ExtResource("1_2gn8l")
+region = Rect2(448, 0, 64, 64)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_201xs"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_5ic8k")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_24wvc")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_b47g8")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_bvjda")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_qqxp3")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_3w64y")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_vo28c")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_jiydq")
+}],
+"loop": true,
+"name": &"Idle",
+"speed": 8.0
+}]
+
+[node name="knuckles" type="CharacterBody3D"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+shape = SubResource("CapsuleShape3D_2wn53")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+
+[node name="AnimatedSprite3D" type="AnimatedSprite3D" parent="."]
+sprite_frames = SubResource("SpriteFrames_201xs")
+animation = &"Idle"
+frame_progress = 0.4283336

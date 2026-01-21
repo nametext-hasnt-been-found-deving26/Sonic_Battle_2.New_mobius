@@ -1,0 +1,22 @@
+[gd_scene load_steps=3 format=3 uid="uid://c1llic0idq083"]
+
+[ext_resource type="Texture2D" uid="uid://rd6wehvyrw26" path="res://userinterface/mainmenubg/mode_select_bg_edited_1.png" id="1_fpr6i"]
+[ext_resource type="Script" uid="uid://2hevqom115pd" path="res://userinterfacecodes/mainmenubg/mode_bg.gd" id="1_obkar"]
+
+[node name="mode_selct_bg" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_obkar")
+
+[node name="bg" type="TextureRect" parent="."]
+unique_name_in_owner = true
+layout_mode = 0
+offset_left = -256.0
+offset_top = -42.0
+offset_right = 1154.6667
+offset_bottom = 648.0
+texture = ExtResource("1_fpr6i")

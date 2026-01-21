@@ -1,0 +1,595 @@
+[gd_scene load_steps=55 format=3 uid="uid://c3xm57ac25n6r"]
+
+[ext_resource type="Script" uid="uid://bvuyyema11nvg" path="res://userinterfacecodes/mainmenubg/scroll_container.gd" id="1_3l2vg"]
+[ext_resource type="Script" uid="uid://b1sqqpu2d40am" path="res://main_menu.gd" id="1_ia6wt"]
+[ext_resource type="Texture2D" uid="uid://icxt6xpb73jb" path="res://menu fonts/backgrounds/background.png" id="2_5wmo6"]
+[ext_resource type="Shader" uid="uid://bjbmb2irn4j5h" path="res://shaders/menu_background_scroll.gdshader" id="2_p11k0"]
+[ext_resource type="Texture2D" uid="uid://cd00ptd2wbbq6" path="res://menu fonts/story mode/Story Mode.webp" id="2_vpr3s"]
+[ext_resource type="Texture2D" uid="uid://bg0summj63q7w" path="res://menu fonts/battle mode/Battle Mode.webp" id="3_a4hfo"]
+[ext_resource type="PackedScene" uid="uid://c1llic0idq083" path="res://scenes/mode_bg.tscn" id="4_b8o6h"]
+[ext_resource type="Texture2D" uid="uid://l7kxhoflopl2" path="res://menu fonts/challenge mode/Challenge Mode.webp" id="4_g2sri"]
+[ext_resource type="FontFile" uid="uid://bgoxgxbcbkvp4" path="res://userinterface/customfonts/Comical Cartoon.ttf" id="4_hwcay"]
+[ext_resource type="Script" uid="uid://dnmo2q4omk44k" path="res://userinterfacecodes/mainmenubg/animated_sprite_2d_bg.gd" id="4_qvqfs"]
+[ext_resource type="Texture2D" uid="uid://bnt0whbgf1ds8" path="res://menu fonts/training/Training.webp" id="5_ia6wt"]
+[ext_resource type="FontFile" uid="uid://6dcex0bpvqw8" path="res://userinterface/customfonts/pixeleum-48-extended.ttf" id="5_u40wn"]
+[ext_resource type="Texture2D" uid="uid://clftd0k6tl82c" path="res://menu fonts/mini game/Mini Games.webp" id="6_gj186"]
+[ext_resource type="Script" uid="uid://dym3kaet1524e" path="res://userinterfacecodes/mainmenubg/main_menu_text.gd" id="6_p11k0"]
+[ext_resource type="Texture2D" uid="uid://b5cyncabid7pn" path="res://menu fonts/battle record/Battle Record.webp" id="7_5wmo6"]
+[ext_resource type="Script" uid="uid://cat76fdxwub6a" path="res://userinterfacecodes/mainmenubg/sonic_batte_version_text.gd" id="8_wso73"]
+[ext_resource type="Texture2D" uid="uid://cy8qy6sjvxtbw" path="res://menu fonts/options/Options.webp" id="8_yteoy"]
+[ext_resource type="AudioStream" uid="uid://b7k8v0m1rr7se" path="res://Mode Select - Sonic Battle [OST].mp3" id="10_gj186"]
+[ext_resource type="Script" uid="uid://svqpme88o5j2" path="res://userinterfacecodes/mainmenubg/story_mode.gd" id="11_v51eu"]
+[ext_resource type="Script" uid="uid://b60lk3yi3ruwu" path="res://userinterfacecodes/mainmenubg/battle_mode.gd" id="13_b8o6h"]
+[ext_resource type="Script" uid="uid://dosdq1acw7n7i" path="res://userinterfacecodes/mainmenubg/challenge_mode.gd" id="15_dfif4"]
+[ext_resource type="Script" uid="uid://c7c8d4bxx5xun" path="res://userinterfacecodes/mainmenubg/training.gd" id="17_g17gf"]
+[ext_resource type="Script" uid="uid://r8sj483jn1sj" path="res://userinterfacecodes/mainmenubg/mini_games.gd" id="19_vek5b"]
+[ext_resource type="PackedScene" uid="uid://dcfsi00miqbhh" path="res://userinterface/transitions/Transition.tscn" id="19_wso73"]
+[ext_resource type="Script" uid="uid://rrdxrf84i5l7" path="res://userinterfacecodes/transitions/transition.gd" id="20_6t1pv"]
+[ext_resource type="Script" uid="uid://byhl2qt1eucv" path="res://userinterfacecodes/mainmenubg/battle_record.gd" id="21_v51eu"]
+[ext_resource type="Script" uid="uid://cobyeef2yeu65" path="res://userinterfacecodes/mainmenubg/options.gd" id="23_b8o6h"]
+[ext_resource type="Texture2D" uid="uid://cfefvjijpke8t" path="res://userinterface/mainmenubg/arrow_left.png" id="28_vrttm"]
+[ext_resource type="Texture2D" uid="uid://ynvhvp8v6yf1" path="res://userinterface/mainmenubg/arrow_right.png" id="29_5fnyu"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_wso73"]
+shader = ExtResource("2_p11k0")
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_hwcay"]
+animations = [{
+"frames": [],
+"loop": true,
+"name": &"BG",
+"speed": 1.0
+}]
+
+[sub_resource type="LabelSettings" id="LabelSettings_lp45h"]
+font = ExtResource("4_hwcay")
+font_color = Color(0, 0, 0, 1)
+outline_size = 5
+shadow_size = 15
+shadow_color = Color(1, 1, 1, 1)
+shadow_offset = Vector2(1.5, 1.5)
+
+[sub_resource type="LabelSettings" id="LabelSettings_qvqfs"]
+font = ExtResource("5_u40wn")
+font_color = Color(1, 1, 1, 0.5019608)
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_3mass"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_dfif4"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_vek5b"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_q6cmh"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_v51eu"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_g17gf"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_vrttm"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_5fnyu"]
+
+[sub_resource type="Animation" id="Animation_dfif4"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("ScrollContainer/HBoxContainer/Story Mode:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("ScrollContainer/HBoxContainer/Battle Mode:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 0)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("ScrollContainer/HBoxContainer/Challenge Mode:modulate")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 0)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("ScrollContainer/HBoxContainer/Training:modulate")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 0)]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("ScrollContainer/HBoxContainer/Mini Games:modulate")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 0)]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("ScrollContainer/HBoxContainer/Battle Record:modulate")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 0)]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("ScrollContainer/HBoxContainer/Options:modulate")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_vek5b"]
+resource_name = "fade_in_battle"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("ScrollContainer/HBoxContainer/Battle Mode:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.8),
+"transitions": PackedFloat32Array(0.99999994, 12.553347),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_35eiu"]
+resource_name = "fade_in_battle_records"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("ScrollContainer/HBoxContainer/Battle Record:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.8),
+"transitions": PackedFloat32Array(1, 9.189588),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_q6cmh"]
+resource_name = "fade_in_challenge_mode"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("ScrollContainer/HBoxContainer/Challenge Mode:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.8),
+"transitions": PackedFloat32Array(1, 6.9644055),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_b8o6h"]
+resource_name = "fade_in_mini_games"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("ScrollContainer/HBoxContainer/Mini Games:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.8),
+"transitions": PackedFloat32Array(1, 5.8563447),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_fix0j"]
+resource_name = "fade_in_options"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("ScrollContainer/HBoxContainer/Options:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.8),
+"transitions": PackedFloat32Array(1, 10.556064),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_3mass"]
+resource_name = "fade_in_story_mode"
+step = 0.0333
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("ScrollContainer/HBoxContainer/Story Mode:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.8),
+"transitions": PackedFloat32Array(1, 21.112122),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_v51eu"]
+resource_name = "fade_in_training"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("ScrollContainer/HBoxContainer/Training:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.8),
+"transitions": PackedFloat32Array(1, 5.856342),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_vek5b"]
+_data = {
+&"RESET": SubResource("Animation_dfif4"),
+&"fade_in_battle": SubResource("Animation_vek5b"),
+&"fade_in_battle_records": SubResource("Animation_35eiu"),
+&"fade_in_challenge_mode": SubResource("Animation_q6cmh"),
+&"fade_in_mini_games": SubResource("Animation_b8o6h"),
+&"fade_in_options": SubResource("Animation_fix0j"),
+&"fade_in_story_mode": SubResource("Animation_3mass"),
+&"fade_in_training": SubResource("Animation_v51eu")
+}
+
+[sub_resource type="Animation" id="Animation_12c6n"]
+resource_name = "hit_arrow_left"
+length = 0.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("arrow left:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.25, 0.5),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2(2, 2), Vector2(2.5, 2.5), Vector2(2, 2)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("arrow left:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.25, 0.5),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2(191, 283), Vector2(144, 283.00003), Vector2(191, 283)]
+}
+
+[sub_resource type="Animation" id="Animation_vrttm"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("arrow left:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(2, 2)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("arrow left:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(191, 283)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("arrow right:scale")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(2, 2)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("arrow right:position")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(722, 283)]
+}
+
+[sub_resource type="Animation" id="Animation_5fnyu"]
+resource_name = "hit_arrow_right"
+length = 0.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("arrow right:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.25, 0.5),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2(2, 2), Vector2(2.5, 2.5), Vector2(2, 2)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("arrow right:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.25, 0.5),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2(722, 283), Vector2(763.00006, 285.00003), Vector2(722, 283)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_r678k"]
+_data = {
+&"RESET": SubResource("Animation_vrttm"),
+&"hit_arrow_left": SubResource("Animation_12c6n"),
+&"hit_arrow_right": SubResource("Animation_5fnyu")
+}
+
+[node name="main_menu" type="CanvasLayer"]
+script = ExtResource("1_ia6wt")
+
+[node name="BGSCROLL" type="TextureRect" parent="."]
+modulate = Color(1, 1, 1, 0.6156863)
+texture_repeat = 2
+material = SubResource("ShaderMaterial_wso73")
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = 11.0
+offset_bottom = 11.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(4, 4)
+texture = ExtResource("2_5wmo6")
+expand_mode = 1
+stretch_mode = 1
+
+[node name="Background" type="Node2D" parent="."]
+
+[node name="mode_selct_bg" parent="Background" instance=ExtResource("4_b8o6h")]
+unique_name_in_owner = true
+
+[node name="ColorRect" type="ColorRect" parent="Background"]
+color = Color(0.19215687, 0.49411765, 1, 0.19607843)
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Background"]
+modulate = Color(1, 1, 1, 0.047058824)
+position = Vector2(624.99994, 327.5001)
+scale = Vector2(3, 3)
+sprite_frames = SubResource("SpriteFrames_hwcay")
+animation = &"BG"
+frame_progress = 0.8805421
+script = ExtResource("4_qvqfs")
+
+[node name="MainMenu" type="Label" parent="Background"]
+offset_left = -737.0
+offset_top = -64.0
+offset_right = 438.0
+offset_bottom = 120.0
+scale = Vector2(2, 2)
+text = "MAIN MENU"
+label_settings = SubResource("LabelSettings_lp45h")
+horizontal_alignment = 1
+vertical_alignment = 1
+script = ExtResource("6_p11k0")
+
+[node name="SonicBatteVersionText" type="Label" parent="Background"]
+offset_left = 6.0
+offset_top = 620.0
+offset_right = 791.0
+offset_bottom = 648.0
+text = "Sonic Battle Demo Version"
+label_settings = SubResource("LabelSettings_qvqfs")
+script = ExtResource("8_wso73")
+
+[node name="info" type="Label" parent="Background"]
+unique_name_in_owner = true
+offset_left = 21.0
+offset_top = 428.0
+offset_right = 452.0
+offset_bottom = 562.0
+theme_override_fonts/font = ExtResource("5_u40wn")
+theme_override_font_sizes/font_size = 24
+text = "Embark on the new mobuis with each character's story"
+autowrap_mode = 2
+
+[node name="ScrollContainer" type="ScrollContainer" parent="."]
+clip_contents = false
+offset_left = 265.0
+offset_top = 178.00002
+offset_right = 381.93335
+offset_bottom = 250.66669
+scale = Vector2(3, 3)
+size_flags_horizontal = 3
+focus_mode = 2
+theme_override_styles/focus = SubResource("StyleBoxEmpty_3mass")
+horizontal_scroll_mode = 3
+vertical_scroll_mode = 3
+script = ExtResource("1_3l2vg")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="ScrollContainer"]
+layout_mode = 2
+size_flags_stretch_ratio = 0.0
+theme_override_constants/separation = 121
+metadata/_edit_lock_ = true
+
+[node name="Story Mode" type="Button" parent="ScrollContainer/HBoxContainer"]
+modulate = Color(1, 1, 1, 0)
+layout_mode = 2
+theme_override_styles/focus = SubResource("StyleBoxEmpty_dfif4")
+button_mask = 0
+text = "
+"
+icon = ExtResource("2_vpr3s")
+flat = true
+script = ExtResource("11_v51eu")
+
+[node name="Battle Mode" type="Button" parent="ScrollContainer/HBoxContainer"]
+modulate = Color(1, 1, 1, 0)
+layout_mode = 2
+theme_override_styles/focus = SubResource("StyleBoxEmpty_vek5b")
+action_mode = 0
+button_mask = 0
+text = "
+"
+icon = ExtResource("3_a4hfo")
+flat = true
+script = ExtResource("13_b8o6h")
+
+[node name="Challenge Mode" type="Button" parent="ScrollContainer/HBoxContainer"]
+modulate = Color(1, 1, 1, 0)
+layout_direction = 2
+layout_mode = 2
+theme_override_styles/focus = SubResource("StyleBoxEmpty_q6cmh")
+icon = ExtResource("4_g2sri")
+flat = true
+script = ExtResource("15_dfif4")
+
+[node name="Training" type="Button" parent="ScrollContainer/HBoxContainer"]
+modulate = Color(1, 1, 1, 0)
+layout_direction = 2
+layout_mode = 2
+theme_override_styles/focus = SubResource("StyleBoxEmpty_v51eu")
+icon = ExtResource("5_ia6wt")
+flat = true
+script = ExtResource("17_g17gf")
+
+[node name="Mini Games" type="Button" parent="ScrollContainer/HBoxContainer"]
+modulate = Color(1, 1, 1, 0)
+layout_direction = 2
+layout_mode = 2
+theme_override_styles/focus = SubResource("StyleBoxEmpty_g17gf")
+icon = ExtResource("6_gj186")
+flat = true
+script = ExtResource("19_vek5b")
+
+[node name="Battle Record" type="Button" parent="ScrollContainer/HBoxContainer"]
+modulate = Color(1, 1, 1, 0)
+layout_direction = 2
+layout_mode = 2
+theme_override_styles/focus = SubResource("StyleBoxEmpty_vrttm")
+icon = ExtResource("7_5wmo6")
+flat = true
+script = ExtResource("21_v51eu")
+
+[node name="Options" type="Button" parent="ScrollContainer/HBoxContainer"]
+modulate = Color(1, 1, 1, 0)
+layout_direction = 2
+layout_mode = 2
+theme_override_styles/focus = SubResource("StyleBoxEmpty_5fnyu")
+icon = ExtResource("8_yteoy")
+flat = true
+script = ExtResource("23_b8o6h")
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("10_gj186")
+autoplay = true
+
+[node name="Transitions" parent="." instance=ExtResource("19_wso73")]
+visible = false
+script = ExtResource("20_6t1pv")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+&"": SubResource("AnimationLibrary_vek5b")
+}
+
+[node name="arrow left" type="Sprite2D" parent="."]
+position = Vector2(191, 283)
+scale = Vector2(2, 2)
+texture = ExtResource("28_vrttm")
+
+[node name="arrow right" type="Sprite2D" parent="."]
+position = Vector2(722, 283)
+scale = Vector2(2, 2)
+texture = ExtResource("29_5fnyu")
+
+[node name="arrow_handler" type="AnimationPlayer" parent="."]
+libraries = {
+&"": SubResource("AnimationLibrary_r678k")
+}
+speed_scale = 2.0
+
+[connection signal="property_list_changed" from="." to="." method="_on_story_mode_pressed"]
+[connection signal="focus_entered" from="ScrollContainer/HBoxContainer/Story Mode" to="ScrollContainer/HBoxContainer/Story Mode" method="_on_focus_entered"]
+[connection signal="focus_exited" from="ScrollContainer/HBoxContainer/Story Mode" to="ScrollContainer/HBoxContainer/Story Mode" method="_on_focus_exited"]
+[connection signal="pressed" from="ScrollContainer/HBoxContainer/Story Mode" to="." method="_on_training_pressed"]
+[connection signal="pressed" from="ScrollContainer/HBoxContainer/Story Mode" to="." method="_on_story_mode_pressed"]
+[connection signal="focus_entered" from="ScrollContainer/HBoxContainer/Battle Mode" to="ScrollContainer/HBoxContainer/Battle Mode" method="_on_focus_entered"]
+[connection signal="focus_exited" from="ScrollContainer/HBoxContainer/Battle Mode" to="ScrollContainer/HBoxContainer/Battle Mode" method="_on_focus_exited"]
+[connection signal="pressed" from="ScrollContainer/HBoxContainer/Battle Mode" to="." method="_on_battle_mode_pressed"]
+[connection signal="focus_entered" from="ScrollContainer/HBoxContainer/Challenge Mode" to="ScrollContainer/HBoxContainer/Challenge Mode" method="_on_focus_entered"]
+[connection signal="focus_exited" from="ScrollContainer/HBoxContainer/Challenge Mode" to="ScrollContainer/HBoxContainer/Challenge Mode" method="_on_focus_exited"]
+[connection signal="focus_entered" from="ScrollContainer/HBoxContainer/Training" to="ScrollContainer/HBoxContainer/Training" method="_on_focus_entered"]
+[connection signal="focus_exited" from="ScrollContainer/HBoxContainer/Training" to="ScrollContainer/HBoxContainer/Training" method="_on_focus_exited"]
+[connection signal="pressed" from="ScrollContainer/HBoxContainer/Training" to="." method="_on_training_pressed"]
+[connection signal="focus_entered" from="ScrollContainer/HBoxContainer/Mini Games" to="ScrollContainer/HBoxContainer/Mini Games" method="_on_focus_entered"]
+[connection signal="focus_exited" from="ScrollContainer/HBoxContainer/Mini Games" to="ScrollContainer/HBoxContainer/Mini Games" method="_on_focus_exited"]
+[connection signal="focus_entered" from="ScrollContainer/HBoxContainer/Battle Record" to="ScrollContainer/HBoxContainer/Battle Record" method="_on_focus_entered"]
+[connection signal="focus_exited" from="ScrollContainer/HBoxContainer/Battle Record" to="ScrollContainer/HBoxContainer/Battle Record" method="_on_focus_exited"]
+[connection signal="focus_entered" from="ScrollContainer/HBoxContainer/Options" to="ScrollContainer/HBoxContainer/Options" method="_on_focus_entered"]
+[connection signal="focus_exited" from="ScrollContainer/HBoxContainer/Options" to="ScrollContainer/HBoxContainer/Options" method="_on_focus_exited"]
+[connection signal="animation_finished" from="AnimationPlayer" to="ScrollContainer/HBoxContainer/Story Mode" method="_on_animation_player_animation_finished"]

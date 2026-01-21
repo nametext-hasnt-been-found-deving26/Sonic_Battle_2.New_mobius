@@ -1,0 +1,165 @@
+[gd_scene load_steps=24 format=3 uid="uid://cgpgy3dqcv2el"]
+
+[ext_resource type="Script" uid="uid://bvuyyema11nvg" path="res://scroll_container.gd" id="1_3l2vg"]
+[ext_resource type="Script" uid="uid://b1sqqpu2d40am" path="res://main_menu.gd" id="1_ia6wt"]
+[ext_resource type="Texture2D" uid="uid://icxt6xpb73jb" path="res://background.png" id="2_5wmo6"]
+[ext_resource type="Texture2D" uid="uid://duv1avw3dllo0" path="res://userinterface/mainmenubg/0.png" id="2_6obdc"]
+[ext_resource type="Texture2D" uid="uid://cd00ptd2wbbq6" path="res://Story Mode.webp" id="2_vpr3s"]
+[ext_resource type="Texture2D" uid="uid://bg0summj63q7w" path="res://Battle Mode.webp" id="3_a4hfo"]
+[ext_resource type="Texture2D" uid="uid://besy40g0qsqs2" path="res://userinterface/mainmenubg/1.png" id="3_fkrve"]
+[ext_resource type="Texture2D" uid="uid://l7kxhoflopl2" path="res://Challenge Mode.webp" id="4_g2sri"]
+[ext_resource type="FontFile" uid="uid://bgoxgxbcbkvp4" path="res://userinterface/customfonts/Comical Cartoon.ttf" id="4_hwcay"]
+[ext_resource type="Script" uid="uid://dnmo2q4omk44k" path="res://userinterfacecodes/mainmenubg/animated_sprite_2d_bg.gd" id="4_qvqfs"]
+[ext_resource type="Texture2D" uid="uid://bnt0whbgf1ds8" path="res://Training.webp" id="5_ia6wt"]
+[ext_resource type="FontFile" uid="uid://6dcex0bpvqw8" path="res://userinterface/customfonts/pixeleum-48-extended.ttf" id="5_u40wn"]
+[ext_resource type="Texture2D" uid="uid://clftd0k6tl82c" path="res://Mini Games.webp" id="6_gj186"]
+[ext_resource type="Script" uid="uid://dym3kaet1524e" path="res://userinterfacecodes/mainmenubg/main_menu_text.gd" id="6_p11k0"]
+[ext_resource type="Texture2D" uid="uid://b5cyncabid7pn" path="res://Battle Record.webp" id="7_5wmo6"]
+[ext_resource type="Script" uid="uid://cat76fdxwub6a" path="res://userinterfacecodes/mainmenubg/sonic_batte_version_text.gd" id="8_wso73"]
+[ext_resource type="Texture2D" uid="uid://cy8qy6sjvxtbw" path="res://Options.webp" id="8_yteoy"]
+[ext_resource type="AudioStream" uid="uid://b7k8v0m1rr7se" path="res://Mode Select - Sonic Battle [OST].mp3" id="10_gj186"]
+[ext_resource type="PackedScene" uid="uid://dcfsi00miqbhh" path="res://userinterface/transitions/Transition.tscn" id="19_wso73"]
+[ext_resource type="Script" uid="uid://rrdxrf84i5l7" path="res://userinterfacecodes/transitions/transition.gd" id="20_6t1pv"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_hwcay"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_6obdc")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_fkrve")
+}],
+"loop": true,
+"name": &"BG",
+"speed": 1.0
+}]
+
+[sub_resource type="LabelSettings" id="LabelSettings_lp45h"]
+font = ExtResource("4_hwcay")
+outline_size = 5
+outline_color = Color(0, 0, 0, 1)
+shadow_size = 15
+shadow_color = Color(0, 0, 0, 1)
+shadow_offset = Vector2(1.5, 1.5)
+
+[sub_resource type="LabelSettings" id="LabelSettings_qvqfs"]
+font = ExtResource("5_u40wn")
+font_color = Color(1, 1, 1, 0.5019608)
+
+[node name="main_menu" type="Control"]
+layout_mode = 3
+anchors_preset = 0
+script = ExtResource("1_ia6wt")
+
+[node name="Background" type="Node2D" parent="."]
+
+[node name="ColorRect" type="ColorRect" parent="Background"]
+offset_right = 1174.0
+offset_bottom = 663.0
+color = Color(0.19215687, 0.49411765, 1, 1)
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Background"]
+modulate = Color(1, 1, 1, 0.21176471)
+position = Vector2(624.99994, 327.5001)
+scale = Vector2(3, 3)
+sprite_frames = SubResource("SpriteFrames_hwcay")
+animation = &"BG"
+frame_progress = 0.8805421
+script = ExtResource("4_qvqfs")
+
+[node name="MainMenu" type="Label" parent="Background"]
+offset_left = -568.0
+offset_top = -72.0
+offset_right = 607.0
+offset_bottom = 112.0
+scale = Vector2(2, 2)
+text = "MAIN MENU"
+label_settings = SubResource("LabelSettings_lp45h")
+horizontal_alignment = 1
+vertical_alignment = 1
+script = ExtResource("6_p11k0")
+
+[node name="SonicBatteVersionText" type="Label" parent="Background"]
+offset_left = 6.0
+offset_top = 620.0
+offset_right = 791.0
+offset_bottom = 648.0
+text = "Sonic Battle Demo Version"
+label_settings = SubResource("LabelSettings_qvqfs")
+script = ExtResource("8_wso73")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+visible = false
+texture = ExtResource("2_5wmo6")
+
+[node name="ScrollContainer" type="ScrollContainer" parent="."]
+clip_contents = false
+layout_mode = 1
+offset_left = 445.00003
+offset_top = 232.0
+offset_right = 561.93335
+offset_bottom = 304.66666
+scale = Vector2(3, 3)
+size_flags_horizontal = 3
+horizontal_scroll_mode = 3
+vertical_scroll_mode = 0
+script = ExtResource("1_3l2vg")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="ScrollContainer"]
+layout_mode = 2
+size_flags_stretch_ratio = 0.0
+theme_override_constants/separation = 121
+
+[node name="Story Mode" type="Button" parent="ScrollContainer/HBoxContainer"]
+layout_mode = 2
+text = "
+"
+icon = ExtResource("2_vpr3s")
+
+[node name="Battle Mode" type="Button" parent="ScrollContainer/HBoxContainer"]
+layout_mode = 2
+keep_pressed_outside = true
+text = "
+"
+icon = ExtResource("3_a4hfo")
+
+[node name="Challenge Mode" type="Button" parent="ScrollContainer/HBoxContainer"]
+layout_direction = 2
+layout_mode = 2
+icon = ExtResource("4_g2sri")
+
+[node name="Training" type="Button" parent="ScrollContainer/HBoxContainer"]
+layout_direction = 2
+layout_mode = 2
+icon = ExtResource("5_ia6wt")
+
+[node name="Mini Games" type="Button" parent="ScrollContainer/HBoxContainer"]
+layout_direction = 2
+layout_mode = 2
+icon = ExtResource("6_gj186")
+
+[node name="Battle Record" type="Button" parent="ScrollContainer/HBoxContainer"]
+layout_direction = 2
+layout_mode = 2
+icon = ExtResource("7_5wmo6")
+
+[node name="Options" type="Button" parent="ScrollContainer/HBoxContainer"]
+layout_direction = 2
+layout_mode = 2
+icon = ExtResource("8_yteoy")
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("10_gj186")
+autoplay = true
+
+[node name="Transitions" parent="." instance=ExtResource("19_wso73")]
+visible = false
+script = ExtResource("20_6t1pv")
+
+[connection signal="property_list_changed" from="." to="." method="_on_story_mode_pressed"]
+[connection signal="pressed" from="ScrollContainer/HBoxContainer/Story Mode" to="." method="_on_training_pressed"]
+[connection signal="pressed" from="ScrollContainer/HBoxContainer/Story Mode" to="." method="_on_story_mode_pressed"]
+[connection signal="pressed" from="ScrollContainer/HBoxContainer/Battle Mode" to="." method="_on_battle_mode_pressed"]
+[connection signal="pressed" from="ScrollContainer/HBoxContainer/Training" to="." method="_on_training_pressed"]
+[connection signal="property_list_changed" from="ScrollContainer/HBoxContainer/Training" to="." method="_on_training_property_list_changed"]

@@ -1,0 +1,44 @@
+[gd_scene load_steps=2 format=3 uid="uid://c3ex3ueuf8ral"]
+
+[ext_resource type="Script" uid="uid://dx6mb8dm1bjdn" path="res://character_select_screen.gd" id="1_lsbwu"]
+
+[node name="ScrollContainer" type="ScrollContainer"]
+offset_right = 787.0
+offset_bottom = 523.0
+horizontal_scroll_mode = 2
+vertical_scroll_mode = 2
+
+[node name="Character Select Screen" type="Control" parent="." node_paths=PackedStringArray("sonic_button")]
+layout_mode = 2
+focus_mode = 2
+script = ExtResource("1_lsbwu")
+sonic_button = NodePath("VBoxContainer/sonic")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Character Select Screen"]
+layout_mode = 1
+anchors_preset = -1
+anchor_top = -0.067
+anchor_bottom = -0.067
+offset_left = -5.0
+offset_top = 2.1050014
+offset_right = 373.0
+offset_bottom = 646.0
+
+[node name="sonic" type="Button" parent="Character Select Screen/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_font_sizes/font_size = 32
+toggle_mode = true
+button_pressed = true
+text = "Sonic
+"
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Character Select Screen"]
+layout_mode = 0
+offset_left = 406.0
+offset_right = 1148.0
+offset_bottom = 278.0
+
+[node name="Button" type="Button" parent="Character Select Screen/HBoxContainer"]
+layout_mode = 2
+text = "tails"
