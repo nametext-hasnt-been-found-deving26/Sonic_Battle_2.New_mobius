@@ -1,0 +1,79 @@
+
+const UPPER_CUT   : int = 1
+const AIR_KICK    : int = 2
+const ROUND_KICK  : int = 3
+const SPIN_ATTACK : int = 4
+
+var valid_inputs  : Array[int] = [KEY_W,KEY_A,KEY_S,KEY_D,KEY_SPACE]
+var valid_actions : Array[int] = []
+var max_life_time : float = 0.4
+var buffer        : Array[Event] = []
+
+var combo : Array[int] = [KEY_D,KEY_D]
+
+class Event:
+	var input     : int = -1
+	var life_time : float = 0.0
+	var consumed  : bool = false
+	
+	func _init(_input : int, _life_time : float) -> void:
+		input = _input
+		life_time = _life_time
+	
+	func _to_string() -> String:
+		return "Input: %s, Life time: %s" % [OS.get_keycode_string(input),life_time]
+
+func _input(event: InputEvent) -> void:
+	if event is InputEventKey or event is InputEventJoypadButton:
+		if event.is_pressed() and event.keycode in valid_inputs:
+			var buffer_event := Event.new(event.keycode, Time.get_ticks_msec() / 1000.0)
+			buffer.push_back(buffer_event)
+
+			if match_combo(combo):
+				valid_actions.append(UPPER_CUT)
+				print("Combo matched!")
+
+	
+func _physics_process(_delta: float) -> void:
+	cleanup_buffer()
+	
+	print(buffer)
+	
+func match_combo(c : Array[int]) -> bool:
+	
+	if buffer.size() < c.size():
+		return false
+	
+	var indexes : Array[int] = []
+	
+	for i in range(c.size()):
+		var buffer_index : int = buffer.size() - 1 - i
+		var combo_index : int = c.size() - 1 - i
+		
+		indexes.push_back(buffer_index)
+		
+		var buf_event : String = OS.get_keycode_string(buffer[buffer_index].input)
+		var combo_event : String = OS.get_keycode_string(c[combo_index])
+		
+		print("buffer:", buf_event, " combo:", combo_event)
+		
+		if buffer[buffer_index].input != c[combo_index] or buffer[buffer_index].consumed:
+			return false
+	
+	for index in indexes:
+		buffer[index].consumed = true
+	
+	return true
+
+func cleanup_buffer() -> void:
+	
+	var current_time: float = Time.get_ticks_msec() / 1000.0
+	
+	var i := 0
+	while i < buffer.size():
+		var e := buffer[i]
+		
+		if e.consumed or (current_time - e.life_time) > max_life_time:
+			buffer.remove_at(i)
+		else:
+			i += 1

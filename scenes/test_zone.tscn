@@ -1,0 +1,40 @@
+[gd_scene load_steps=8 format=3 uid="uid://bfep1ev0dyq71"]
+
+[ext_resource type="Script" uid="uid://ci6dffegj48hi" path="res://scripts/input_buffer.gd" id="1_i2pjl"]
+[ext_resource type="Script" uid="uid://clli67oitanbn" path="res://scripts/input buffer + combo system/combo_resource.gd" id="2_vy3mc"]
+[ext_resource type="Resource" uid="uid://bvhm2tc6x00yo" path="res://resources/character combos/air_attack.tres" id="3_hsuob"]
+[ext_resource type="Resource" uid="uid://m17epxg75w4n" path="res://resources/character combos/attack_2.tres" id="4_ntdbd"]
+[ext_resource type="Resource" uid="uid://bouse1jnvyuv3" path="res://resources/character combos/attack_3.tres" id="5_p7d8n"]
+[ext_resource type="Resource" uid="uid://b515i6gtul53b" path="res://resources/character combos/dash.tres" id="6_nbo5w"]
+[ext_resource type="Resource" uid="uid://b16ixyfpjtl40" path="res://resources/character combos/heavy_attack.tres" id="7_rjiow"]
+
+[node name="TestZone" type="Node3D"]
+
+[node name="InputBuffer" type="Node" parent="." node_paths=PackedStringArray("v_box")]
+script = ExtResource("1_i2pjl")
+combos = Array[ExtResource("2_vy3mc")]([ExtResource("3_hsuob"), ExtResource("4_ntdbd"), ExtResource("5_p7d8n"), ExtResource("6_nbo5w"), ExtResource("7_rjiow")])
+v_box = NodePath("../CanvasLayer/Control/VBoxContainer")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="Control" type="ColorRect" parent="CanvasLayer"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.32941177, 0.32941177, 1, 1)
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/Control"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -20.0
+offset_right = 20.0
+offset_bottom = 20.0
+grow_horizontal = 2
+grow_vertical = 2

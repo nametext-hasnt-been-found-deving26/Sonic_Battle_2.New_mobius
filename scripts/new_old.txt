@@ -1,0 +1,250 @@
+extends Node
+
+# =====================
+# ACTION CONSTANTS
+# =====================
+const UPPER_CUT   : int = 1
+const AIR_KICK    : int = 2
+const ROUND_KICK  : int = 3
+const SPIN_ATTACK : int = 4
+const DASH        : int = 5
+const SUPER_DASH  : int = 6
+const SINGLE_ATK  : int = 7
+const COMBO_ATK   : int = 8
+
+var translation : Dictionary[int,String] = {
+	UPPER_CUT  : "Upper Cut",
+	AIR_KICK   : "Air Kick",
+	ROUND_KICK : "Round Kick",
+	SPIN_ATTACK : "Spin Attack",
+	DASH : "Dash",
+	SUPER_DASH : "Super Dash",
+	SINGLE_ATK : "Single Attack",
+	COMBO_ATK : "Combo Attack"
+}
+
+# =====================
+# CONFIG
+# =====================
+var valid_inputs : Array[int] = [
+	KEY_W, KEY_A, KEY_S, KEY_D, KEY_SPACE, KEY_P
+]
+
+var max_buffer_frames        : int = 24
+var max_action_buffer_frames : int = 14
+
+
+# =====================
+# STATE
+# =====================
+var current_frame : int = 0
+var buffer        : Array[InputEventData] = []
+var action_queue  : Array[BufferedAction] = []
+
+var pending_match : Dictionary = {}
+var pending_frame : int = -1
+var max_wait_frames : int = 10
+
+
+
+# =====================
+# COMBOS
+# =====================
+var combos : Array[Combo] = [
+	Combo.new([KEY_D, KEY_D, KEY_SPACE], SUPER_DASH),
+	Combo.new([KEY_D, KEY_D], DASH),
+	Combo.new([KEY_D, KEY_SPACE], AIR_KICK),
+	Combo.new([KEY_S, KEY_S], SINGLE_ATK),
+	Combo.new([KEY_S, KEY_S, KEY_S], COMBO_ATK)
+]
+
+
+# =====================
+# DATA TYPES
+# =====================
+class InputEventData:
+	var input : int
+	var frame : int
+
+	func _init(_input: int, _frame: int) -> void:
+		input = _input
+		frame = _frame
+
+
+class Combo:
+	var inputs   : Array[int]
+	var action   : int
+	var priority : int
+
+	func _init(_inputs: Array[int], _action: int) -> void:
+		inputs   = _inputs
+		action   = _action
+		priority = inputs.size()
+
+
+class BufferedAction:
+	var action : int
+	var frame  : int
+
+	func _init(_action: int, _frame: int) -> void:
+		action = _action
+		frame  = _frame
+
+
+# =====================
+# INPUT CAPTURE
+# =====================
+func _input(event: InputEvent) -> void:
+	if event is InputEventKey and event.is_pressed():
+		if event.keycode in valid_inputs:
+			buffer_input(event.keycode)
+
+
+func buffer_input(keycode: int) -> void:
+	buffer.append(InputEventData.new(keycode, current_frame))
+
+
+# =====================
+# MAIN LOOP
+# =====================
+func _physics_process(_delta: float) -> void:
+	current_frame += 1
+
+	cleanup_input_buffer()
+	cleanup_action_queue()
+
+	var matches := find_combo_matches()
+	if matches.is_empty():
+		return
+
+	sort_matches(matches)
+	resolve_matches(matches)
+	
+	if not action_queue.is_empty():
+		print(translation[action_queue[0].action])
+
+
+# =====================
+# COMBO MATCHING
+# =====================
+func find_combo_matches() -> Array:
+	var matches := []
+
+	for combo in combos:
+		var indices := match_combo(combo.inputs)
+		if not indices.is_empty():
+			matches.append({
+				"combo": combo,
+				"indices": indices
+			})
+
+	return matches
+
+
+func match_combo(inputs: Array[int]) -> Array[int]:
+	if buffer.size() < inputs.size():
+		return []
+
+	var matched_indices : Array[int] = []
+
+	for i in range(inputs.size()):
+		var buffer_index := buffer.size() - 1 - i
+		var combo_index  := inputs.size() - 1 - i
+
+		if buffer[buffer_index].input != inputs[combo_index]:
+			return []
+
+		matched_indices.push_back(buffer_index)
+
+	return matched_indices
+
+
+func sort_matches(matches: Array) -> void:
+	matches.sort_custom(func(a, b):
+		if a.combo.inputs.size() != b.combo.inputs.size():
+			return a.combo.inputs.size() > b.combo.inputs.size()
+		return a.combo.priority > b.combo.priority
+	)
+
+
+# =====================
+# OVERLAP RESOLUTION
+# =====================
+func resolve_matches(matches: Array) -> void:
+	if matches.is_empty():
+		pending_match.clear()
+		return
+
+	var best : Dictionary = matches[0]
+
+	# Case: longer combo could still happen → wait
+	if has_longer_combo_with_prefix(best.combo.inputs):
+		if pending_match.is_empty():
+			pending_match = best
+			pending_frame = current_frame
+		elif current_frame - pending_frame >= max_wait_frames:
+			commit_combo(pending_match)
+			pending_match.clear()
+		return
+
+	# Case: no longer combo possible → commit immediately
+	commit_combo(best)
+	pending_match.clear()
+
+func commit_combo(matched : Dictionary) -> void:
+	queue_action(matched.combo.action)
+	consume_indices(matched.indices)
+
+
+func has_longer_combo_with_prefix(prefix: Array[int]) -> bool:
+	for combo in combos:
+		if combo.inputs.size() <= prefix.size():
+			continue
+
+		var is_prefix := true
+		for i in range(prefix.size()):
+			if combo.inputs[i] != prefix[i]:
+				is_prefix = false
+				break
+
+		if is_prefix:
+			return true
+
+	return false
+
+
+# =====================
+# ACTION QUEUE
+# =====================
+func queue_action(action: int) -> void:
+	action_queue.append(BufferedAction.new(action, current_frame))
+
+
+func pop_action() -> int:
+	if action_queue.is_empty():
+		return -1
+	return action_queue.pop_front().action
+
+
+func cleanup_action_queue() -> void:
+	for i in range(action_queue.size() - 1, -1, -1):
+		if current_frame - action_queue[i].frame > max_action_buffer_frames:
+			action_queue.remove_at(i)
+
+
+# =====================
+# BUFFER MANAGEMENT
+# =====================
+func consume_indices(indices: Array[int]) -> void:
+	indices.sort()
+	for i in range(indices.size() - 1, -1, -1):
+		buffer.remove_at(indices[i])
+
+
+func cleanup_input_buffer() -> void:
+	for i in range(buffer.size() - 1, -1, -1):
+		if current_frame - buffer[i].frame > max_buffer_frames:
+			buffer.remove_at(i)
+
+	if buffer.is_empty():
+		pending_match.clear()

@@ -1,4 +1,4 @@
-[gd_scene load_steps=203 format=3 uid="uid://mauh6dm54vxi"]
+[gd_scene load_steps=215 format=3 uid="uid://mauh6dm54vxi"]
 
 [ext_resource type="Texture2D" uid="uid://6jrpbsxm81kr" path="res://sonic.png" id="1_56lgg"]
 [ext_resource type="Script" uid="uid://qmcrqa243th5" path="res://new_characters/sonic/sonic.gd" id="1_sloj2"]
@@ -8,6 +8,7 @@
 [ext_resource type="Script" uid="uid://7ivd4d4y0knp" path="res://new_characters/sonic/state machine/states/ground.gd" id="6_ywm6m"]
 [ext_resource type="Script" uid="uid://bwu2b8oreqwu4" path="res://new_characters/sonic/state machine/states/airborne.gd" id="7_6p2ki"]
 [ext_resource type="Texture2D" uid="uid://clrs1488rjd3g" path="res://textures/shadow.png" id="8_7kcxy"]
+[ext_resource type="Texture2D" uid="uid://clmpsvahm224y" path="res://textures/dash_sprite_sheet.png" id="9_l63bm"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_eeu7w"]
 atlas = ExtResource("1_56lgg")
@@ -1006,9 +1007,9 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_77rlb")
 }],
-"loop": true,
-"name": &"Dashing toward opponent ",
-"speed": 5.0
+"loop": false,
+"name": &"Dashing toward opponent",
+"speed": 16.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -1440,7 +1441,7 @@ animations = [{
 }],
 "loop": false,
 "name": &"Turning around fast",
-"speed": 12.0
+"speed": 14.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -1522,6 +1523,90 @@ animations = [{
 "speed": 5.0
 }]
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_avpmp"]
+atlas = ExtResource("9_l63bm")
+region = Rect2(0, 0, 32, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_b7hix"]
+atlas = ExtResource("9_l63bm")
+region = Rect2(32, 0, 32, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2lxkk"]
+atlas = ExtResource("9_l63bm")
+region = Rect2(64, 0, 32, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_vmkmy"]
+atlas = ExtResource("9_l63bm")
+region = Rect2(96, 0, 32, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_1scyd"]
+atlas = ExtResource("9_l63bm")
+region = Rect2(128, 0, 32, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_18dp8"]
+atlas = ExtResource("9_l63bm")
+region = Rect2(160, 0, 32, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_3il2e"]
+atlas = ExtResource("9_l63bm")
+region = Rect2(192, 0, 32, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_f112t"]
+atlas = ExtResource("9_l63bm")
+region = Rect2(224, 0, 32, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_k1tdv"]
+atlas = ExtResource("9_l63bm")
+region = Rect2(256, 0, 32, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_reb5g"]
+atlas = ExtResource("9_l63bm")
+region = Rect2(288, 0, 32, 64)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_ki1rv"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": null
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_avpmp")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_b7hix")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_2lxkk")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_vmkmy")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_1scyd")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_18dp8")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_3il2e")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_f112t")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_k1tdv")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_reb5g")
+}, {
+"duration": 1.0,
+"texture": null
+}],
+"loop": false,
+"name": &"default",
+"speed": 20.0
+}]
+
 [node name="Sonic" type="CharacterBody3D" node_paths=PackedStringArray("shadow", "shadow_ray", "animator")]
 collision_layer = 2
 collision_mask = 3
@@ -1534,9 +1619,9 @@ animator = NodePath("Animator")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.23, 0)
 texture_filter = 2
 sprite_frames = SubResource("SpriteFrames_cd0fl")
-animation = &"Turning around fast"
+animation = &"Dashing toward opponent"
 autoplay = "Idle"
-frame = 3
+frame = 4
 frame_progress = 1.0
 
 [node name="GroundCollision" type="CollisionShape3D" parent="."]
@@ -1559,8 +1644,9 @@ sonic = NodePath("..")
 [node name="Idle" type="Node" parent="SonicStateMachine"]
 script = ExtResource("5_pfx0n")
 
-[node name="Ground" type="Node" parent="SonicStateMachine"]
+[node name="Ground" type="Node" parent="SonicStateMachine" node_paths=PackedStringArray("dash_effect")]
 script = ExtResource("6_ywm6m")
+dash_effect = NodePath("../../DashEffect")
 
 [node name="Airborne" type="Node" parent="SonicStateMachine"]
 script = ExtResource("7_6p2ki")
@@ -1580,3 +1666,9 @@ animation = &"shadow"
 [node name="ShadowRay" type="RayCast3D" parent="."]
 enabled = false
 target_position = Vector3(0, -2, 0)
+
+[node name="DashEffect" type="AnimatedSprite3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.35, -0.02)
+texture_filter = 2
+render_priority = -1
+sprite_frames = SubResource("SpriteFrames_ki1rv")

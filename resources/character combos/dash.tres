@@ -1,0 +1,8 @@
+[gd_resource type="Resource" script_class="Combo" load_steps=2 format=3 uid="uid://b515i6gtul53b"]
+
+[ext_resource type="Script" uid="uid://clli67oitanbn" path="res://scripts/input buffer + combo system/combo_resource.gd" id="1_8bxrl"]
+
+[resource]
+script = ExtResource("1_8bxrl")
+inputs = Array[int]([3, 3])
+metadata/_custom_type_script = "uid://clli67oitanbn"

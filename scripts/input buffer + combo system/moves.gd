@@ -1,0 +1,6 @@
+extends Node
+# Combo move
+class_name CM
+
+enum Moves {DASH,ATK_1,ATK_2,ATK_3,HEAVY_ATK,AIR_ATK,SPECIAL}
+enum Keys {FORWARD,BACKWARD,LEFT,RIGHT,JUMP,ATTACK,SPECIAL,BLOCK}
