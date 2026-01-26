@@ -1,4 +1,4 @@
-[gd_scene load_steps=220 format=3 uid="uid://mauh6dm54vxi"]
+[gd_scene load_steps=230 format=3 uid="uid://mauh6dm54vxi"]
 
 [ext_resource type="Texture2D" uid="uid://6jrpbsxm81kr" path="res://sonic.png" id="1_56lgg"]
 [ext_resource type="Script" uid="uid://qmcrqa243th5" path="res://new_characters/sonic/sonic.gd" id="1_sloj2"]
@@ -9,7 +9,9 @@
 [ext_resource type="Script" uid="uid://bwu2b8oreqwu4" path="res://new_characters/sonic/states/airborne.gd" id="7_6p2ki"]
 [ext_resource type="Texture2D" uid="uid://clrs1488rjd3g" path="res://textures/shadow.png" id="8_7kcxy"]
 [ext_resource type="Script" uid="uid://dxvypbnmfqyj3" path="res://new_characters/sonic/states/air_dash.gd" id="8_lyhei"]
+[ext_resource type="Script" uid="uid://xtin216x7ql7" path="res://new_characters/sonic/states/guard.gd" id="9_avpmp"]
 [ext_resource type="Texture2D" uid="uid://clmpsvahm224y" path="res://textures/dash_sprite_sheet.png" id="9_l63bm"]
+[ext_resource type="Texture2D" uid="uid://c7o45xf2ya7ak" path="res://textures/air_dash_effect.png" id="11_hesga"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_eeu7w"]
 atlas = ExtResource("1_56lgg")
@@ -1513,6 +1515,11 @@ animations = [{
 "loop": true,
 "name": &"Wall cling",
 "speed": 5.0
+}, {
+"frames": [],
+"loop": true,
+"name": &"block",
+"speed": 5.0
 }]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_6p2ki"]
@@ -1641,6 +1648,66 @@ animations = [{
 "speed": 20.0
 }]
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_pdvsq"]
+atlas = ExtResource("11_hesga")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_e7bcw"]
+atlas = ExtResource("11_hesga")
+region = Rect2(32, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_g6pix"]
+atlas = ExtResource("11_hesga")
+region = Rect2(64, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_qmqii"]
+atlas = ExtResource("11_hesga")
+region = Rect2(96, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_x7ph2"]
+atlas = ExtResource("11_hesga")
+region = Rect2(128, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_b1ym0"]
+atlas = ExtResource("11_hesga")
+region = Rect2(160, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8pc60"]
+atlas = ExtResource("11_hesga")
+region = Rect2(192, 0, 32, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_gf5jh"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_pdvsq")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_e7bcw")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_g6pix")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_qmqii")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_x7ph2")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_b1ym0")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8pc60")
+}, {
+"duration": 1.0,
+"texture": null
+}],
+"loop": false,
+"name": &"default",
+"speed": 12.0
+}]
+
 [node name="Sonic" type="CharacterBody3D" node_paths=PackedStringArray("shadow", "shadow_ray", "animator")]
 collision_layer = 2
 collision_mask = 3
@@ -1653,7 +1720,7 @@ animator = NodePath("Animator")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.23, 0)
 texture_filter = 2
 sprite_frames = SubResource("SpriteFrames_cd0fl")
-animation = &"Air dash"
+animation = &"Heal loop"
 autoplay = "Idle"
 
 [node name="GroundCollision" type="CollisionShape3D" parent="."]
@@ -1683,8 +1750,12 @@ dash_effect = NodePath("../../DashEffect")
 [node name="Airborne" type="Node" parent="SonicStateMachine"]
 script = ExtResource("7_6p2ki")
 
-[node name="AirDash" type="Node" parent="SonicStateMachine"]
+[node name="AirDash" type="Node" parent="SonicStateMachine" node_paths=PackedStringArray("air_dash_effect")]
 script = ExtResource("8_lyhei")
+air_dash_effect = NodePath("../../AirDashEffect")
+
+[node name="Guard" type="Node" parent="SonicStateMachine"]
+script = ExtResource("9_avpmp")
 
 [node name="Camera3D" type="Camera3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 0.9659259, 0.25881907, 0, -0.25881907, 0.9659259, 0, 0.77175, 1.4)
@@ -1707,3 +1778,13 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.35, -0.02)
 texture_filter = 2
 render_priority = -1
 sprite_frames = SubResource("SpriteFrames_ki1rv")
+frame = 11
+frame_progress = 1.0
+
+[node name="AirDashEffect" type="AnimatedSprite3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.2, 0)
+texture_filter = 4
+render_priority = 2
+sprite_frames = SubResource("SpriteFrames_gf5jh")
+frame = 6
+frame_progress = 1.0

@@ -47,12 +47,15 @@ func handle_transitions() -> void:
 		if sonic.is_on_floor():
 			transition("Idle")
 			return
-	
-	
+		
 	if not sonic.is_on_floor():
 		transition("Airborne")
 		return
-
+	
+	if sonic.is_on_floor() and Input.is_action_pressed("block"):
+		transition("Guard")
+		return
+	
 func handle_modifiers(delta : float) -> void:
 	match current_modifier:
 		modifiers.Ground:

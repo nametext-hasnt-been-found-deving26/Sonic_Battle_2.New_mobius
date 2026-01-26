@@ -38,3 +38,7 @@ func handle_transitions() -> void:
 	if not sonic.is_on_floor():
 		transition("Airborne")
 		return
+	
+	if sonic.is_on_floor() and Input.is_action_pressed("block"):
+		transition("Guard")
+		return
