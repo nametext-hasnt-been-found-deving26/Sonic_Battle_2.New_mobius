@@ -9,10 +9,13 @@ var current_modifier : modifiers = modifiers.Ground
 var dash_force : float = 5.0
 var dash_start_time : float = 0.0
 var max_dash_time : float = 0.4
+var min_dash_time : float = 0.2
+var has_released_dash : bool = false
 
 var dash_dir : Vector2
 
 func _on_enter(_context : Dictionary = {}) -> void:
+	has_released_dash = false
 	if not dash_effect.top_level:
 		offset_position = dash_effect.position
 		dash_effect.top_level = true
@@ -77,6 +80,10 @@ func handle_modifiers(delta : float) -> void:
 			handle_transitions()
 			
 		modifiers.Dash:
+			
+			if Input.is_action_just_released("dash") and not has_released_dash:
+				has_released_dash = true
+			
 			if sonic.input.x != 0:
 				sonic.facing_dir = sign(sonic.input.x)
 			
@@ -85,11 +92,18 @@ func handle_modifiers(delta : float) -> void:
 			sonic.move_and_slide()
 			
 			var current_time : float = Time.get_ticks_msec() / 1000.0
-			if (current_time - dash_start_time) > max_dash_time or Input.is_action_just_released("dash"):
+			
+			if (current_time - dash_start_time) > max_dash_time:
 				current_modifier = modifiers.Ground
 				sonic.animator_ctrl.stop_update = false
 				play_landing()
 				return
+			elif (current_time - dash_start_time) > min_dash_time and has_released_dash:
+				current_modifier = modifiers.Ground
+				sonic.animator_ctrl.stop_update = false
+				play_landing()
+				return
+			
 
 func play_landing() -> void:
 	sonic.animator_ctrl.play("Landing",true)
