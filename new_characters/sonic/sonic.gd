@@ -8,20 +8,20 @@ class_name Sonic
 
 @onready var animator_ctrl : AnimatorController = AnimatorController.new(animator)
 
-var top_speed : float = 2.4
-var accel : float = 20.0
-var decel : float = 40.0
-var air_accel : float = 8.0
-var friction : float = 35.0
-var jump_force : float = 3.4
-var gravity : float = 9.8
+var top_speed    : float = 2.4
+var accel        : float = 20.0
+var decel        : float = 40.0
+var air_accel    : float = 8.0
+var friction     : float = 35.0
+var jump_force   : float = 3.4
+var gravity      : float = 9.8
 var fall_gravity : float = 16.0
 
-
-var input : Vector2 = Vector2.ZERO
-var facing_dir : int = 1
+var input        : Vector2 = Vector2.ZERO
+var facing_dir   : int = 1
 var acceleration : float = accel
 var ground_speed : float = 0.0
+var dir          : Vector3 = Vector3.ZERO
 
 
 func _process(_delta: float) -> void:
@@ -35,6 +35,9 @@ func _physics_process(_delta: float) -> void:
 
 func _handle_input() -> void:
 	input = Input.get_vector("left","right","forward","backward")
+	
+	if input:
+		dir = Vector3(input.x,0.0,input.y).normalized()
 
 func apply_gravity(delta : float) -> void:
 	if velocity.y < 0.0:

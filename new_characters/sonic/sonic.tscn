@@ -1,13 +1,14 @@
-[gd_scene load_steps=215 format=3 uid="uid://mauh6dm54vxi"]
+[gd_scene load_steps=220 format=3 uid="uid://mauh6dm54vxi"]
 
 [ext_resource type="Texture2D" uid="uid://6jrpbsxm81kr" path="res://sonic.png" id="1_56lgg"]
 [ext_resource type="Script" uid="uid://qmcrqa243th5" path="res://new_characters/sonic/sonic.gd" id="1_sloj2"]
 [ext_resource type="Texture2D" uid="uid://b61i4m030q6st" path="res://characters/sonic/sonic sprites/dashing.png" id="2_sloj2"]
 [ext_resource type="Script" uid="uid://bulnvvi0xxkdm" path="res://new_characters/sonic/state machine/sonic_state_machine.gd" id="4_cd0fl"]
-[ext_resource type="Script" uid="uid://bolrd8gvhod61" path="res://new_characters/sonic/state machine/states/idle.gd" id="5_pfx0n"]
-[ext_resource type="Script" uid="uid://7ivd4d4y0knp" path="res://new_characters/sonic/state machine/states/ground.gd" id="6_ywm6m"]
-[ext_resource type="Script" uid="uid://bwu2b8oreqwu4" path="res://new_characters/sonic/state machine/states/airborne.gd" id="7_6p2ki"]
+[ext_resource type="Script" uid="uid://bolrd8gvhod61" path="res://new_characters/sonic/states/idle.gd" id="5_pfx0n"]
+[ext_resource type="Script" uid="uid://7ivd4d4y0knp" path="res://new_characters/sonic/states/ground.gd" id="6_ywm6m"]
+[ext_resource type="Script" uid="uid://bwu2b8oreqwu4" path="res://new_characters/sonic/states/airborne.gd" id="7_6p2ki"]
 [ext_resource type="Texture2D" uid="uid://clrs1488rjd3g" path="res://textures/shadow.png" id="8_7kcxy"]
+[ext_resource type="Script" uid="uid://dxvypbnmfqyj3" path="res://new_characters/sonic/states/air_dash.gd" id="8_lyhei"]
 [ext_resource type="Texture2D" uid="uid://clmpsvahm224y" path="res://textures/dash_sprite_sheet.png" id="9_l63bm"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_eeu7w"]
@@ -177,6 +178,22 @@ region = Rect2(384, 448, 64, 64)
 [sub_resource type="AtlasTexture" id="AtlasTexture_qjap1"]
 atlas = ExtResource("1_56lgg")
 region = Rect2(448, 448, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ki1rv"]
+atlas = ExtResource("1_56lgg")
+region = Rect2(192, 128, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_gmn34"]
+atlas = ExtResource("1_56lgg")
+region = Rect2(256, 128, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_u7gat"]
+atlas = ExtResource("1_56lgg")
+region = Rect2(320, 128, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_jc4hq"]
+atlas = ExtResource("1_56lgg")
+region = Rect2(384, 128, 64, 64)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_n4aqw"]
 atlas = ExtResource("1_56lgg")
@@ -915,6 +932,23 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
+"texture": SubResource("AtlasTexture_ki1rv")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_gmn34")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_u7gat")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_jc4hq")
+}],
+"loop": true,
+"name": &"Air dash",
+"speed": 12.0
+}, {
+"frames": [{
+"duration": 1.0,
 "texture": SubResource("AtlasTexture_n4aqw")
 }, {
 "duration": 1.0,
@@ -1619,10 +1653,8 @@ animator = NodePath("Animator")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.23, 0)
 texture_filter = 2
 sprite_frames = SubResource("SpriteFrames_cd0fl")
-animation = &"Dashing toward opponent"
+animation = &"Air dash"
 autoplay = "Idle"
-frame = 4
-frame_progress = 1.0
 
 [node name="GroundCollision" type="CollisionShape3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.025, 0)
@@ -1650,6 +1682,9 @@ dash_effect = NodePath("../../DashEffect")
 
 [node name="Airborne" type="Node" parent="SonicStateMachine"]
 script = ExtResource("7_6p2ki")
+
+[node name="AirDash" type="Node" parent="SonicStateMachine"]
+script = ExtResource("8_lyhei")
 
 [node name="Camera3D" type="Camera3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 0.9659259, 0.25881907, 0, -0.25881907, 0.9659259, 0, 0.77175, 1.4)

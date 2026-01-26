@@ -40,9 +40,9 @@ func _on_physics_update(delta : float) -> void:
 		sonic.animator_ctrl.play("Falling",true)
 	
 	if sonic.input.x != 0:
-		if sonic.facing_dir != sign(sonic.input.x):
-			sonic.facing_dir = sign(sonic.input.x)
-			sonic.animator.flip_h = sonic.facing_dir != 1
+		sonic.facing_dir = sign(sonic.input.x)
+		sonic.animator.flip_h = sonic.facing_dir != 1
+
 	
 	sonic.apply_gravity(delta)
 	sonic.handle_ground_movement(delta)
@@ -50,6 +50,11 @@ func _on_physics_update(delta : float) -> void:
 	handle_transitions()
 
 func handle_transitions() -> void:
+	
+	
+	if Input.is_action_just_pressed("dash") and not sonic.is_on_floor():
+		transition("AirDash",{"Dir" : sonic.dir})
+		return
 	
 	if sonic.input.is_equal_approx(Vector2.ZERO) and sonic.is_on_floor():
 		transition("Idle")
