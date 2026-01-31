@@ -1,7 +1,7 @@
 [gd_scene load_steps=6 format=3 uid="uid://oct0tj5jtkcf"]
 
 [ext_resource type="PackedScene" uid="uid://b4utdyvi5x0jp" path="res://models/city-noprops.glb" id="1_hs7m4"]
-[ext_resource type="PackedScene" uid="uid://cw4mee85ro4f6" path="res://characters/sonic.tscn" id="2_tq8my"]
+[ext_resource type="PackedScene" uid="uid://c844scnvf5jom" path="res://characters/sonic/sonic.tscn" id="2_tq8my"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_hs7m4"]
 sky_top_color = Color(0.297, 0.44825003, 0.66, 1)
